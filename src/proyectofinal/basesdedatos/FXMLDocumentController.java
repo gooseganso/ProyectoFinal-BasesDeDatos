@@ -28,7 +28,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void doHola(ActionEvent event) {
-        System.out.println("hola o algo");
+        System.out.println("Hello.java:1: Class or interface declaration expected.");
     }
     
 }
