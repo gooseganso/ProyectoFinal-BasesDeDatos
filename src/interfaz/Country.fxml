@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="527.0" prefWidth="893.0" style="-fx-background-color: #3D4956;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="controller.CountryController">
+   <children>
+      <JFXButton layoutX="660.0" layoutY="433.0" text="Consultar país" />
+      <JFXButton layoutX="192.0" layoutY="427.0" text="Eliminar" />
+      <JFXButton layoutX="419.0" layoutY="427.0" text="Insertar" />
+   </children>
+</AnchorPane>
