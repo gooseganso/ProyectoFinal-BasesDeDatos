@@ -16,7 +16,7 @@ public class ProyectoFinalBasesDeDato extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/interfaz/FXMLDocument.fxml"));
         
         stage.initStyle(StageStyle.TRANSPARENT);
         Scene scene = new Scene(root);

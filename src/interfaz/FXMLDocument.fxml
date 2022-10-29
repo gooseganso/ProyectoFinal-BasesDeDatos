@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="627.0" prefWidth="893.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectofinal.basesdedatos.FXMLDocumentController">
+   <children>
+      <AnchorPane fx:id="table_tab" layoutY="100.0" prefHeight="527.0" prefWidth="893.0" style="-fx-background-color: #3D4956;" />
+      <AnchorPane fx:id="city_tab" layoutY="100.0" prefHeight="527.0" prefWidth="893.0" style="-fx-background-color: #3D4956;">
+         <children>
+            <JFXButton layoutX="389.0" layoutY="459.0" text="Consultar lenguaje" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="country_tab" layoutY="100.0" prefHeight="527.0" prefWidth="893.0" style="-fx-background-color: #3D4956;">
+         <children>
+            <JFXButton layoutX="215.0" layoutY="427.0" text="Insertar" />
+            <JFXButton layoutX="636.0" layoutY="439.0" text="Eliminar" />
+            <JFXButton layoutX="412.0" layoutY="451.0" text="Consultar país" />
+         </children></AnchorPane>
+      <AnchorPane fx:id="language_tab" layoutY="100.0" prefHeight="527.0" prefWidth="893.0" style="-fx-background-color: #3D4956;">
+         <children>
+            <JFXButton fx:id="btnLindo" layoutX="424.0" layoutY="425.0" onAction="#doHola" text="Lindo" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="top_bar" prefHeight="85.0" prefWidth="893.0" style="-fx-background-color: #3D4956;">
+         <children>
+            <ImageView fx:id="lang" fitHeight="60.0" fitWidth="73.0" layoutX="648.0" layoutY="13.0" onMouseClicked="#doTab" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/languages.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="country" fitHeight="60.0" fitWidth="73.0" layoutX="405.0" layoutY="13.0" onMouseClicked="#doTab" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/australia.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="city" fitHeight="60.0" fitWidth="73.0" layoutX="529.0" layoutY="13.0" onMouseClicked="#doTab" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/skyscrapper.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="table" fitHeight="60.0" fitWidth="73.0" layoutX="293.0" layoutY="13.0" onMouseClicked="#doTab" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/table.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+   </children>
+</AnchorPane>
