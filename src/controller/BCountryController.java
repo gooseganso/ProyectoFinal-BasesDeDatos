@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -38,7 +39,8 @@ public class BCountryController implements Initializable {
     private void back(ActionEvent event) throws IOException
     {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/interfaz/HCountry.fxml"));
-           
+        
+        System.out.println("Hola prueba");
         rootPane.getChildren().setAll(pane);
     }
     
