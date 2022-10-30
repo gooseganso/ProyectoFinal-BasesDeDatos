@@ -40,7 +40,7 @@ public class BCountryController implements Initializable {
     {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/interfaz/HCountry.fxml"));
         
-        System.out.println("Hola prueba");
+        
         rootPane.getChildren().setAll(pane);
     }
     
