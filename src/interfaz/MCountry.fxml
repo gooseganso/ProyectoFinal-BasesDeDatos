@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXSlider?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="511.0" prefWidth="786.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MCountryController">
+   <children>
+      <JFXComboBox layoutX="319.0" layoutY="57.0" prefHeight="25.0" prefWidth="150.0" />
+      <Label layoutX="313.0" layoutY="25.0" text="Selecciones el país a modificar" />
+      <TextField layoutX="123.0" layoutY="150.0" prefHeight="25.0" prefWidth="225.0" promptText="ej: Colombia" />
+      <Label contentDisplay="RIGHT" layoutX="39.0" layoutY="154.0" text="Nombre:" />
+      <Label layoutX="245.0" layoutY="104.0" text="Código" />
+      <TextField editable="false" layoutX="297.0" layoutY="96.0" prefHeight="25.0" prefWidth="68.0" />
+      <Label layoutX="379.0" layoutY="100.0" text="Código 2:" />
+      <TextField editable="false" layoutX="447.0" layoutY="96.0" prefHeight="25.0" prefWidth="121.0" />
+      <Label contentDisplay="CENTER" layoutX="39.0" layoutY="203.0" text="Región:" />
+      <JFXComboBox fx:id="boxContinente" layoutX="474.0" layoutY="199.0" onAction="#doRegion" prefHeight="25.0" prefWidth="216.0" />
+      <JFXComboBox fx:id="boxRegion" disable="true" layoutX="123.0" layoutY="199.0" prefHeight="25.0" prefWidth="225.0" />
+      <Label layoutX="380.0" layoutY="203.0" text="Continente" />
+      <Label contentDisplay="CENTER" layoutX="39.0" layoutY="256.0" prefHeight="25.0" prefWidth="53.0" text="Población" />
+      <JFXSlider layoutX="507.0" layoutY="262.0" max="2022.0" min="-2000.0" prefHeight="14.0" prefWidth="240.0" />
+      <Label layoutX="10.0" layoutY="306.0" prefHeight="25.0" prefWidth="99.0" text="Esperanza de vida" />
+      <Spinner fx:id="spinner_Ezp" layoutX="123.0" layoutY="306.0" prefHeight="25.0" prefWidth="225.0" />
+      <Label layoutX="39.0" layoutY="375.0" prefHeight="25.0" prefWidth="33.0" text="PIB" />
+      <Label layoutX="393.0" layoutY="375.0" prefHeight="25.0" prefWidth="33.0" text="PIB 2" />
+      <Label layoutX="380.0" layoutY="256.0" prefHeight="25.0" prefWidth="121.0" text="Año de independencia" />
+      <Label layoutX="38.0" layoutY="431.0" prefHeight="25.0" prefWidth="68.0" text="Superficie" />
+      <Label layoutX="379.0" layoutY="431.0" prefHeight="25.0" prefWidth="51.0" text="Capital" />
+      <TextField layoutX="472.0" layoutY="150.0" prefHeight="25.0" prefWidth="225.0" promptText="ej: Colombia" />
+      <TextField layoutX="479.0" layoutY="306.0" prefHeight="25.0" prefWidth="216.0" promptText="ej: Gustavo Petro" />
+      <Label layoutX="380.0" layoutY="150.0" prefHeight="25.0" prefWidth="99.0" text="Nombre local" />
+      <Label contentDisplay="CENTER" layoutX="380.0" layoutY="306.0" prefHeight="25.0" prefWidth="99.0" text="Cabeza de estado" />
+      <TextField layoutX="123.0" layoutY="256.0" prefHeight="25.0" prefWidth="225.0" />
+      <TextField layoutX="123.0" layoutY="375.0" prefHeight="25.0" prefWidth="225.0" />
+      <TextField layoutX="473.0" layoutY="375.0" prefHeight="25.0" prefWidth="225.0" />
+      <TextField layoutX="469.0" layoutY="419.0" prefHeight="25.0" prefWidth="225.0" />
+      <TextField layoutX="123.0" layoutY="431.0" prefHeight="25.0" prefWidth="225.0" />
+   </children>
+</AnchorPane>

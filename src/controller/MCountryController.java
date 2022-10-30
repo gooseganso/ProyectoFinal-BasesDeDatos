@@ -1,0 +1,116 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
+ */
+package controller;
+
+import com.jfoenix.controls.JFXComboBox;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Spinner;
+
+/**
+ * FXML Controller class
+ *
+ * @author Usuario
+ */
+public class MCountryController implements Initializable {
+
+    @FXML
+    private JFXComboBox<String> boxContinente;
+    @FXML
+    private JFXComboBox<String> boxRegion;
+    @FXML
+    private Spinner<?> spinner_Ezp;
+
+    /**
+     * Initializes the controller class.
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+    }    
+
+    @FXML
+    private void doRegion(ActionEvent event) {
+        this.boxRegion.getItems().clear();
+        
+        this.boxRegion.setDisable(false);
+    
+        if(this.boxContinente.getSelectionModel().getSelectedItem().equals("Asia"))
+        {
+          this.boxRegion.getItems().add("Southern and central Asia");
+          this.boxRegion.getItems().add("Middle East");
+          this.boxRegion.getItems().add("Southeast Asia");
+          this.boxRegion.getItems().add("Eastern Asia");
+        
+        }
+        
+        else
+        {
+          if (this.boxContinente.getSelectionModel().getSelectedItem().equals("Europe"))
+          {
+           this.boxRegion.getItems().add("Southern Europe");
+           this.boxRegion.getItems().add("Western Europe");
+           this.boxRegion.getItems().add("Eastern Europe");
+           this.boxRegion.getItems().add("Nordic Countries");
+           this.boxRegion.getItems().add("Baltic Countries");
+           this.boxRegion.getItems().add("British Islands");
+          
+          }
+          
+          else
+          {
+            if(this.boxContinente.getSelectionModel().getSelectedItem().equals("North America"))
+            {
+             this.boxRegion.getItems().add("Caribbean");
+             this.boxRegion.getItems().add("Central America");
+             this.boxRegion.getItems().add("North America");
+            }
+            
+            else
+            {
+              if(this.boxContinente.getSelectionModel().getSelectedItem().equals("Africa"))
+              {
+               this.boxRegion.getItems().add("Central Africa");
+               this.boxRegion.getItems().add("Eastern Africa");
+               this.boxRegion.getItems().add("Western Africa");
+               this.boxRegion.getItems().add("Southern Africa");
+               this.boxRegion.getItems().add("Northern Africa");
+              
+              }
+              
+              else
+              {
+                if(this.boxContinente.getSelectionModel().getSelectedItem().equals("Oceania"))
+                {
+                  this.boxRegion.getItems().add("Polynesia");
+                  this.boxRegion.getItems().add("Australia and New Zealand");
+                  this.boxRegion.getItems().add("Melanesia");
+                  this.boxRegion.getItems().add("Micronesia");
+                  this.boxRegion.getItems().add("Micronesia/Caribbean");
+                
+                }
+                
+                else
+                {
+                 if(this.boxContinente.getSelectionModel().getSelectedItem().equals("Antartica"))
+                 {
+                  this.boxRegion.getItems().add("Antartica");
+                 }
+                 
+                 else
+                 {
+                   this.boxRegion.getItems().add("South America");
+                 }
+                }
+              }
+            }
+          }
+        }
+    }
+    
+}

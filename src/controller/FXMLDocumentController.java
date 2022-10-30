@@ -34,8 +34,6 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private ImageView city;
     @FXML
-    private ImageView table;
-    @FXML
     private AnchorPane tab;
     @FXML
     private AnchorPane principal_tab;
@@ -50,23 +48,12 @@ public class FXMLDocumentController implements Initializable {
         System.out.println("Prueba de texto");
     }
 
-    @FXML
-    private void doTab(MouseEvent event) throws IOException 
-    {
-        
-   
-         AnchorPane pane = FXMLLoader.load(getClass().getResource("/interfaz/Tables.fxml"));
-           
-         tab.getChildren().setAll(pane);
-             
-        
-     }
 
     @FXML
     private void doLang(MouseEvent event) throws IOException 
     {
         
-         AnchorPane pane = FXMLLoader.load(getClass().getResource("/interfaz/Language.fxml"));
+         AnchorPane pane = FXMLLoader.load(getClass().getResource("/interfaz/HLanguage.fxml"));
            
          tab.getChildren().setAll(pane);
     }
@@ -74,7 +61,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void doCountry(MouseEvent event) throws IOException
     {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/interfaz/Country.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/interfaz/HCountry.fxml"));
            
          tab.getChildren().setAll(pane);
     }
@@ -82,7 +69,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void doCity(MouseEvent event) throws IOException
     {
-      AnchorPane pane = FXMLLoader.load(getClass().getResource("/interfaz/City.fxml"));
+      AnchorPane pane = FXMLLoader.load(getClass().getResource("/interfaz/HCity.fxml"));
            
          tab.getChildren().setAll(pane);
     }

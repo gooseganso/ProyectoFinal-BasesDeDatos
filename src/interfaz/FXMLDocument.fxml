@@ -4,10 +4,10 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" fx:id="principal_tab" prefHeight="627.0" prefWidth="893.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FXMLDocumentController">
+<AnchorPane id="AnchorPane" fx:id="principal_tab" prefHeight="744.0" prefWidth="1096.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FXMLDocumentController">
    <children>
-      <AnchorPane fx:id="tab" layoutY="100.0" prefHeight="527.0" prefWidth="893.0" />
-      <AnchorPane fx:id="top_bar" prefHeight="85.0" prefWidth="893.0" style="-fx-background-color: #3D4956;">
+      <AnchorPane fx:id="tab" layoutY="100.0" prefHeight="645.0" prefWidth="1096.0" />
+      <AnchorPane fx:id="top_bar" prefHeight="85.0" prefWidth="1096.0" style="-fx-background-color: #3D4956;">
          <children>
             <ImageView fx:id="lang" fitHeight="60.0" fitWidth="73.0" layoutX="648.0" layoutY="13.0" onMouseClicked="#doLang" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -22,11 +22,6 @@
             <ImageView fx:id="city" fitHeight="60.0" fitWidth="73.0" layoutX="529.0" layoutY="13.0" onMouseClicked="#doCity" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/skyscrapper.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="table" fitHeight="60.0" fitWidth="73.0" layoutX="293.0" layoutY="13.0" onMouseClicked="#doTab" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/table.png" />
                </image>
             </ImageView>
          </children></AnchorPane>

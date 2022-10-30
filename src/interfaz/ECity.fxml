@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="511.0" prefWidth="786.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="controller.ECityController">
+   <children>
+      <TableView layoutY="14.0" prefHeight="436.0" prefWidth="786.0">
+        <columns>
+          <TableColumn prefWidth="66.0" text="ID" />
+          <TableColumn prefWidth="142.0" text="Name" />
+            <TableColumn prefWidth="147.0" text="CountryCode" />
+            <TableColumn prefWidth="195.0" text="Disctrict" />
+            <TableColumn prefWidth="235.0" text="Population" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

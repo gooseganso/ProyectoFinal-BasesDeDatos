@@ -13,7 +13,7 @@ import javafx.fxml.Initializable;
  *
  * @author Usuario
  */
-public class LanguageController implements Initializable {
+public class CCityController implements Initializable {
 
     /**
      * Initializes the controller class.

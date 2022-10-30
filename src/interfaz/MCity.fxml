@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="511.0" prefWidth="786.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="controller.MCityController">
+   <children>
+      <Label layoutX="75.0" layoutY="191.0" prefHeight="22.0" prefWidth="95.0" text="Nombre" />
+      <Label layoutX="75.0" layoutY="261.0" prefHeight="22.0" prefWidth="95.0" text="Código de país" />
+      <Label layoutX="75.0" layoutY="329.0" prefHeight="22.0" prefWidth="95.0" text="Departamento" />
+      <Label layoutX="75.0" layoutY="401.0" prefHeight="22.0" prefWidth="95.0" text="Población" />
+      <JFXComboBox layoutX="247.0" layoutY="260.0" prefHeight="25.0" prefWidth="169.0" />
+      <TextField layoutX="247.0" layoutY="190.0" prefHeight="25.0" prefWidth="169.0" />
+      <JFXComboBox layoutX="247.0" layoutY="328.0" prefHeight="25.0" prefWidth="169.0" />
+      <TextField layoutX="247.0" layoutY="400.0" prefHeight="25.0" prefWidth="169.0" />
+      <JFXComboBox layoutX="220.0" layoutY="108.0" prefHeight="25.0" prefWidth="231.0" />
+      <JFXComboBox layoutX="220.0" layoutY="67.0" prefHeight="25.0" prefWidth="231.0" />
+      <Label layoutX="38.0" layoutY="69.0" prefHeight="22.0" prefWidth="95.0" text="Seleccione el país" />
+      <Label layoutX="38.0" layoutY="110.0" prefHeight="22.0" prefWidth="169.0" text="Seleccione la ciudad a editar" />
+   </children>
+</AnchorPane>

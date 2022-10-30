@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="645.0" prefWidth="1096.0" style="-fx-background-color: #3D4956;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BCountryController">
+   <children>
+      <TableView layoutX="22.0" layoutY="20.0" prefHeight="200.0" prefWidth="1050.0" style="-fx-background-color: gray;">
+        <columns>
+          <TableColumn prefWidth="53.0" text="Code" />
+          <TableColumn prefWidth="57.0" text="Name" />
+            <TableColumn prefWidth="61.0" text="Continent" />
+            <TableColumn prefWidth="73.0" text="Region" />
+            <TableColumn prefWidth="84.0" text="SurfaceArea" />
+            <TableColumn prefWidth="68.0" text="IndepYear" />
+            <TableColumn prefWidth="75.0" text="Population" />
+            <TableColumn prefWidth="96.0" text="Life Expectancy" />
+            <TableColumn minWidth="0.0" prefWidth="37.0" text="GNP" />
+            <TableColumn prefWidth="53.0" text="GNPOld" />
+            <TableColumn prefWidth="83.0" text="LocalName" />
+            <TableColumn prefWidth="103.0" text="GovermentForm" />
+            <TableColumn prefWidth="105.0" text="Cabeza de Estado" />
+            <TableColumn minWidth="0.0" prefWidth="73.0" text="Capital" />
+            <TableColumn prefWidth="27.0" text="Code 2" />
+        </columns>
+      </TableView>
+      <JFXRadioButton layoutX="55.0" layoutY="527.0" />
+      <JFXRadioButton layoutX="55.0" layoutY="555.0" />
+      <JFXRadioButton layoutX="55.0" layoutY="584.0" />
+      <JFXButton fx:id="btn_Volver" layoutX="930.0" layoutY="589.0" onAction="#back" prefHeight="25.0" prefWidth="87.0" style="-fx-background-color: orange;" text="Volver" />
+   </children>
+</AnchorPane>
