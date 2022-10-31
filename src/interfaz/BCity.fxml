@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="645.0" prefWidth="1096.0" style="-fx-background-color: #3D4956;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="controller.BCityController">
+   <children>
+      <TableView layoutX="110.0" layoutY="56.0" prefHeight="267.0" prefWidth="877.0">
+        <columns>
+          <TableColumn prefWidth="96.0" text="ID" />
+          <TableColumn prefWidth="205.0" text="Nombre" />
+            <TableColumn prefWidth="119.0" text="País" />
+            <TableColumn prefWidth="189.0" text="Distrito" />
+            <TableColumn prefWidth="267.0" text="Population" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="645.0" prefWidth="1096.0" style="-fx-background-color: #3D4956;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HCityController">
+<AnchorPane id="AnchorPane" fx:id="rootpane" prefHeight="645.0" prefWidth="1096.0" style="-fx-background-color: #3D4956;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HCityController">
    <children>
       <Label layoutX="43.0" layoutY="78.0" text="Ciudades" textFill="WHITE">
          <font>

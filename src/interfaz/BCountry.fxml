@@ -8,23 +8,23 @@
 
 <AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="645.0" prefWidth="1096.0" style="-fx-background-color: #3D4956;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BCountryController">
    <children>
-      <TableView layoutX="22.0" layoutY="20.0" prefHeight="200.0" prefWidth="1050.0" style="-fx-background-color: gray;">
+      <TableView fx:id="tableC" layoutX="22.0" layoutY="20.0" prefHeight="200.0" prefWidth="1049.0" style="-fx-background-color: gray;">
         <columns>
-          <TableColumn prefWidth="53.0" text="Code" />
-          <TableColumn prefWidth="57.0" text="Name" />
-            <TableColumn prefWidth="61.0" text="Continent" />
-            <TableColumn prefWidth="73.0" text="Region" />
-            <TableColumn prefWidth="84.0" text="SurfaceArea" />
-            <TableColumn prefWidth="68.0" text="IndepYear" />
-            <TableColumn prefWidth="75.0" text="Population" />
-            <TableColumn prefWidth="96.0" text="Life Expectancy" />
-            <TableColumn minWidth="0.0" prefWidth="37.0" text="GNP" />
-            <TableColumn prefWidth="53.0" text="GNPOld" />
-            <TableColumn prefWidth="83.0" text="LocalName" />
-            <TableColumn prefWidth="103.0" text="GovermentForm" />
-            <TableColumn prefWidth="105.0" text="Cabeza de Estado" />
-            <TableColumn minWidth="0.0" prefWidth="73.0" text="Capital" />
-            <TableColumn prefWidth="27.0" text="Code 2" />
+          <TableColumn fx:id="Code" prefWidth="53.0" text="Code" />
+          <TableColumn fx:id="Name" prefWidth="57.0" text="Name" />
+            <TableColumn fx:id="Continent" prefWidth="61.0" text="Continent" />
+            <TableColumn fx:id="Region" prefWidth="73.0" text="Region" />
+            <TableColumn fx:id="SurfaceArea" prefWidth="84.0" text="SurfaceArea" />
+            <TableColumn fx:id="IndepYear" prefWidth="68.0" text="IndepYear" />
+            <TableColumn fx:id="Population" prefWidth="75.0" text="Population" />
+            <TableColumn fx:id="LifeExp" prefWidth="96.0" text="Life Expectancy" />
+            <TableColumn fx:id="GNP" minWidth="0.0" prefWidth="37.0" text="GNP" />
+            <TableColumn fx:id="GNPOld" prefWidth="53.0" text="GNPOld" />
+            <TableColumn fx:id="LocalName" prefWidth="83.0" text="LocalName" />
+            <TableColumn fx:id="GovermentForm" prefWidth="103.0" text="GovermentForm" />
+            <TableColumn fx:id="HeadOfState" prefWidth="105.0" text="Cabeza de Estado" />
+            <TableColumn fx:id="Capital" minWidth="0.0" prefWidth="73.0" text="Capital" />
+            <TableColumn fx:id="Code2" prefWidth="27.0" text="Code 2" />
         </columns>
       </TableView>
       <JFXRadioButton layoutX="55.0" layoutY="527.0" />

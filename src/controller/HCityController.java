@@ -32,6 +32,8 @@ public class HCityController implements Initializable {
     private JFXButton btn_Buscar;
     @FXML
     private AnchorPane city_Crud;
+    @FXML
+    private AnchorPane rootpane;
 
     /**
      * Initializes the controller class.
@@ -62,7 +64,12 @@ public class HCityController implements Initializable {
     }
 
     @FXML
-    private void doBuscar(ActionEvent event) throws IOException {
+    private void doBuscar(ActionEvent event) throws IOException 
+    {
+        
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/interfaz/BCity.fxml"));
+           
+         rootpane.getChildren().setAll(pane);
     }
 
     @FXML

@@ -1,48 +1,37 @@
 
 package conection;
-import java.sql.Statement;
-import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 public class conection {
     
-    Connection con;
+    private Connection con;
+    
+    
+    
     public conection()
+    {
+      this.con = null;
+    }
+    
+    public Connection getconection()
             {
              try
              {
                Class.forName("com.mysql.cj.jdbc.Driver");
-               con=DriverManager.getConnection("jdbc:mysql://localhost:3306/world","root","12345678");
-               
+               con=(Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/world","root","12345678");
+               if(con != null)
+               {
+                System.out.println("Conexión establecida");
+               }
              }
-             catch (Exception e)
+             catch (ClassNotFoundException | SQLException e)
                      {
                       System.err.println("Error: " +e);
                      }
              
-             
+              return this.con;
             }
-    public static void main(String[] args)
-             {
-              conection cn=new conection();
-              
-              Statement st;
-              ResultSet rs;
-              
-              try {
-              st=cn.con.createStatement();
-              
-              rs=st.executeQuery("Select * from country");
-              
-              while (rs.next())
-              {
-                 System.out.println(rs.getString("code"));
-              }
-              cn.con.close();
-              } 
-              catch (Exception e)
-              {
-              
-              }
-             }
+           
+    
 }
