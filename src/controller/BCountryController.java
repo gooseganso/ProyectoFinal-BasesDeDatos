@@ -118,7 +118,7 @@ public class BCountryController implements Initializable {
         this.SurfaceArea.setCellValueFactory(new PropertyValueFactory("surfaceArea"));
         this.IndepYear.setCellValueFactory(new PropertyValueFactory("indepYear"));
         this.Population.setCellValueFactory(new PropertyValueFactory("population"));
-        this.LifeExp.setCellValueFactory(new PropertyValueFactory("lideExpectancy"));
+        this.LifeExp.setCellValueFactory(new PropertyValueFactory("lifeExpectancy"));
         this.GNP.setCellValueFactory(new PropertyValueFactory("GNP"));
         this.GNPOld.setCellValueFactory(new PropertyValueFactory("GNPOld"));
         this.LocalName.setCellValueFactory(new PropertyValueFactory("localName"));
