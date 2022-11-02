@@ -18,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  *
@@ -37,6 +38,8 @@ public class FXMLDocumentController implements Initializable {
     private AnchorPane tab;
     @FXML
     private AnchorPane principal_tab;
+    @FXML
+    private JFXButton cerrar;
     
     
     @Override
@@ -72,6 +75,14 @@ public class FXMLDocumentController implements Initializable {
       AnchorPane pane = FXMLLoader.load(getClass().getResource("/interfaz/HCity.fxml"));
            
          tab.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void cerrar(ActionEvent event) {
+        
+        Stage stage = (Stage) this.cerrar.getScene().getWindow();
+        stage.close();
+        System.exit(0);
     }
     
 }
