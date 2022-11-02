@@ -2,30 +2,28 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package controller;
+package Gestion;
 
 import conection.conection;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import tablas.City;
 import tablas.Country;
 
 /**
  *
  * @author Eduen
  */
-public class LlenarTablas 
+public class GestionCountry 
 {
     private conection conexion;
     private Connection cn;
     private Statement st;
     ObservableList<Country> misCountry = FXCollections.observableArrayList();
-    ObservableList<City> misCities = FXCollections.observableArrayList();
-    
-
     
     public ObservableList<Country> llenarTablaPaises() 
     {
@@ -49,27 +47,32 @@ public class LlenarTablas
     
        return this.misCountry;
     }
+     public ArrayList getPaisCode() 
     
-    public ObservableList<City> llenarTablaCity() 
-    {
-      
+     {
         this.conexion = new conection();
         this.cn = this.conexion.getconection();
-        this.misCities = FXCollections.observableArrayList();
-      try
-        {
-        ResultSet rc= cn.createStatement().executeQuery("Select * from city");
+        this.misCountry = FXCollections.observableArrayList();
+        String registro=null;
+        ArrayList<String> CodePais= new ArrayList<String>();
         
-        while (rc.next())
+        try
         {
-          misCities.add(new City(rc.getInt("ID"),rc.getString("Name"),rc.getString("CountryCode"),rc.getString("District"),rc.getInt("Population")));
+          ResultSet rs= cn.createStatement().executeQuery("Select * from country");
+          while (rs.next())
+            {
+          String[] campos = registro.split("_");
+          CodePais.add(campos[1]);
+            }
         }
+        
+        catch (Exception e) 
+        {
+            System.out.println("Falló buscando la base datos");
         }
-        catch(Exception e)
-                     {
-                      System.err.println("Error: " +e);
-                     }
-      return this.misCities;
-    }
-
+        
+        return CodePais;
+     }
+    
 }
+

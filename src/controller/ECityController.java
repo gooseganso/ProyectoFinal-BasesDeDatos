@@ -4,6 +4,7 @@
  */
 package controller;
 
+import Gestion.GestionCity;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -36,7 +37,7 @@ public class ECityController implements Initializable {
     private TableColumn<City, ?> colDistri;
     @FXML
     private TableColumn<City, ?> colPobla;
-     private LlenarTablas llenar;
+     private GestionCity llenar;
     ObservableList<City> misCities = FXCollections.observableArrayList();
 
     /**
@@ -44,7 +45,7 @@ public class ECityController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       this.llenar= new LlenarTablas(); 
+       this.llenar= new GestionCity(); 
        this.misCities=this.llenar.llenarTablaCity();
        this.modelaTabla();
    

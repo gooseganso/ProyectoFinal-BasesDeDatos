@@ -21,6 +21,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import tablas.City;
 import tablas.Country;
+import Gestion.GestionCity;
 
 /**
  * FXML Controller class
@@ -45,7 +46,7 @@ public class BCityController implements Initializable {
     private AnchorPane rootPane;
     @FXML
     private JFXButton btn_Volver;
-    private LlenarTablas llenar;
+    private GestionCity llenar;
     ObservableList<City> misCities = FXCollections.observableArrayList();
 
     /**
@@ -54,7 +55,7 @@ public class BCityController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-       this.llenar= new LlenarTablas(); 
+       this.llenar= new GestionCity(); 
        this.misCities=this.llenar.llenarTablaCity();
        this.modelaTabla();
     }

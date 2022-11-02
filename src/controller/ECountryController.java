@@ -4,6 +4,7 @@
  */
 package controller;
 
+import Gestion.GestionCountry;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -47,7 +48,7 @@ public class ECountryController implements Initializable {
     private TableColumn<Country, ?> HeadOfState;
     @FXML
     private TableColumn<Country, ?> Capital;
-    private LlenarTablas llenar;
+    private GestionCountry llenar;
     ObservableList<Country> misCountry = FXCollections.observableArrayList();
  
 
@@ -56,7 +57,7 @@ public class ECountryController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       this.llenar= new LlenarTablas();
+       this.llenar= new GestionCountry();
         this.misCountry = this.llenar.llenarTablaPaises();
         this.modelaTabla();
     }    

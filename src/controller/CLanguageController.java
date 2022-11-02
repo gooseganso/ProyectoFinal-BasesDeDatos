@@ -16,6 +16,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import tablas.Country;
+import Gestion.GestionCountry;
+import java.util.ArrayList;
 
 /**
  * FXML Controller class
@@ -25,7 +27,7 @@ import tablas.Country;
 public class CLanguageController implements Initializable {
 
     @FXML
-    private JFXComboBox<?> comboPais;
+    private JFXComboBox<String> comboPais;
     @FXML
     private Spinner<Integer> ComboPorcentaje;
     @FXML
@@ -33,6 +35,7 @@ public class CLanguageController implements Initializable {
     private conection conexion;
     private Connection cn;
     private Statement st;
+    private GestionCountry gestionC;
 
     /**
      * Initializes the controller class.
@@ -41,6 +44,7 @@ public class CLanguageController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) 
     
     {
+        this.gestionC=new GestionCountry();
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100);
         
         ComboPorcentaje.setValueFactory(valueFactory);
@@ -48,31 +52,17 @@ public class CLanguageController implements Initializable {
          valueFactory.setValue(1);
          this.ComboOficial.getItems().add("Sí");
          this.ComboOficial.getItems().add("No");
+         
+         this.llenarComboPais();
     }
 
     
    private void llenarComboPais()
    {
-     this.conexion = new conection();
-     this.cn = this.conexion.getconection();
-     Country c = new Country();
-     
-        String codeC = c.getCode();
-     
-      try
-        {
-        ResultSet rs= cn.createStatement().executeQuery("Select Code from country");
-        while (rs.next())
-        {
-          
+        ArrayList<String> CodePais = this.gestionC.getPaisCode();
+        for (String cadena : CodePais) {
+            this.comboPais.getItems().add(cadena);
         }
-        }
-      
-      catch(Exception e)
-                     {
-                      System.err.println("Error: " +e);
-                     }
-   
-   }    
+   }
     
 }

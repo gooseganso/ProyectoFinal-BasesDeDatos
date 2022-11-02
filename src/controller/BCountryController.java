@@ -4,6 +4,7 @@
  */
 package controller;
 
+import Gestion.GestionCountry;
 import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
@@ -66,7 +67,8 @@ public class BCountryController implements Initializable {
     private TableColumn<Country, ?> Code2;
     @FXML
     private TableColumn<Country, ?> Capital;
-    private LlenarTablas llenar;
+    
+    private GestionCountry llenar;
     
     ObservableList<Country> misCountry = FXCollections.observableArrayList();
     
@@ -76,7 +78,7 @@ public class BCountryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-        this.llenar= new LlenarTablas();
+        this.llenar= new GestionCountry();
         this.misCountry = this.llenar.llenarTablaPaises();
         this.modelaTabla();
         // TODO
