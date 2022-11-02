@@ -4,11 +4,7 @@
  */
 package controller;
 
-import conection.conection;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -51,17 +47,17 @@ public class ECountryController implements Initializable {
     private TableColumn<Country, ?> HeadOfState;
     @FXML
     private TableColumn<Country, ?> Capital;
-    private conection conexion;
-    private Connection cn;
-    private Statement st;
+    private LlenarTablas llenar;
     ObservableList<Country> misCountry = FXCollections.observableArrayList();
+ 
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        this.misCountry = FXCollections.observableArrayList();
+       this.llenar= new LlenarTablas();
+        this.misCountry = this.llenar.llenarTablaPaises();
         this.modelaTabla();
     }    
     public void constructorNuevo(ArrayList<Country> caso) 
@@ -92,22 +88,6 @@ public class ECountryController implements Initializable {
     }
 
     private void llenarTablaPaises() {
-        this.conexion = new conection();
-        this.cn = this.conexion.getconection();
-        
-        try
-        {
-        ResultSet rs= cn.createStatement().executeQuery("Select * from country");
-        
-        while (rs.next())
-        {
-          misCountry.add(new Country(rs.getString("Code"),rs.getString("Name"),rs.getString("Continent"),rs.getString("Region"),rs.getFloat("SurfaceArea"),rs.getInt("IndepYear"),rs.getInt("Population"),rs.getFloat("LifeExpectancy"),rs.getFloat("GNP"),rs.getFloat("GNPOld"),rs.getString("LocalName"),rs.getString("GovernmentForm"),rs.getString("HeadOfState"),rs.getString("Capital"),rs.getString("Code2")));
-        }
-        }
-        catch(Exception e)
-                     {
-                      System.err.println("Error: " +e);
-                     }
       tableCountry.setItems(misCountry);
     }
     

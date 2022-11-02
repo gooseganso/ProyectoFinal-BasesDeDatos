@@ -4,16 +4,15 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="511.0" prefWidth="786.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="controller.ECityController">
+<AnchorPane id="AnchorPane" prefHeight="511.0" prefWidth="786.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ECityController">
    <children>
-      <TableView layoutY="14.0" prefHeight="436.0" prefWidth="786.0">
+      <TableView fx:id="tableCity" layoutY="14.0" prefHeight="436.0" prefWidth="786.0" style="-fx-background-color: gray;">
         <columns>
-          <TableColumn prefWidth="66.0" text="ID" />
-          <TableColumn prefWidth="142.0" text="Name" />
-            <TableColumn prefWidth="147.0" text="CountryCode" />
-            <TableColumn prefWidth="195.0" text="Disctrict" />
-            <TableColumn prefWidth="235.0" text="Population" />
+          <TableColumn fx:id="colID" prefWidth="66.0" text="ID" />
+          <TableColumn fx:id="colNomb" prefWidth="142.0" text="Name" />
+            <TableColumn fx:id="colPais" prefWidth="147.0" text="CountryCode" />
+            <TableColumn fx:id="colDistri" prefWidth="195.0" text="Disctrict" />
+            <TableColumn fx:id="colPobla" prefWidth="235.0" text="Population" />
         </columns>
       </TableView>
    </children>
