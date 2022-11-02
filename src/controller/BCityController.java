@@ -4,9 +4,27 @@
  */
 package controller;
 
+import com.jfoenix.controls.JFXButton;
+import conection.conection;
+import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import tablas.City;
+import tablas.Country;
 
 /**
  * FXML Controller class
@@ -15,12 +33,79 @@ import javafx.fxml.Initializable;
  */
 public class BCityController implements Initializable {
 
+    @FXML
+    private TableView<City> tableCity;
+    @FXML
+    private TableColumn<City, ?> colID;
+    @FXML
+    private TableColumn<City, ?> colNomb;
+    @FXML
+    private TableColumn<City, ?> colPais;
+    @FXML
+    private TableColumn<City, ?> colDistri;
+    @FXML
+    private TableColumn<City, ?> colPobla;
+    @FXML
+    private AnchorPane rootPane;
+    @FXML
+    private JFXButton btn_Volver;
+    private conection conexion;
+    private Connection cn;
+    private Statement st;
+    ObservableList<City> misCities = FXCollections.observableArrayList();
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        
+       this.misCities = FXCollections.observableArrayList();
+       this.modelaTabla();
+    }
+    public void constructorNuevo(ArrayList<Country> caso) 
+    {
+        this.tableCity.getItems().clear();
+        this.modelaTabla();
+
+    }
+
+    @FXML
+    private void back(ActionEvent event)  throws IOException {
+        
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/interfaz/HCity.fxml"));
+        rootPane.getChildren().setAll(pane);
+    }
+
+    private void modelaTabla() {
+       this.llenarTablaCities();
+       this.colID.setCellValueFactory(new PropertyValueFactory("ID"));
+       this.colNomb.setCellValueFactory(new PropertyValueFactory("name"));
+       this.colPais.setCellValueFactory(new PropertyValueFactory("countryCode"));
+       this.colDistri.setCellValueFactory(new PropertyValueFactory("district"));
+       this.colPobla.setCellValueFactory(new PropertyValueFactory("population"));
+        
+        
+    }
+
+    private void llenarTablaCities() {
+        this.conexion = new conection();
+        this.cn = this.conexion.getconection();
+        
+        try
+        {
+        ResultSet rs= cn.createStatement().executeQuery("Select * from city");
+        
+        while (rs.next())
+        {
+          misCities.add(new City(rs.getInt("ID"),rs.getString("Name"),rs.getString("CountryCode"),rs.getString("District"),rs.getInt("Population")));
+        }
+        }
+        catch(Exception e)
+                     {
+                      System.err.println("Error: " +e);
+                     }
+      tableCity.setItems(misCities);
+    }
     
 }

@@ -19,7 +19,7 @@ public class conection {
              try
              {
                Class.forName("com.mysql.cj.jdbc.Driver");
-               con=(Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/world","root","12345678");
+               con=(Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/world","root","Cuchumino1*");
                if(con != null)
                {
                 System.out.println("Conexión establecida");

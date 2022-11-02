@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="645.0" prefWidth="1096.0" style="-fx-background-color: #3D4956;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="controller.BCityController">
+<AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="645.0" prefWidth="1096.0" style="-fx-background-color: #3D4956;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BCityController">
    <children>
-      <TableView layoutX="110.0" layoutY="56.0" prefHeight="267.0" prefWidth="877.0">
+      <TableView fx:id="tableCity" layoutX="110.0" layoutY="56.0" prefHeight="267.0" prefWidth="877.0" style="-fx-background-color: gray;">
         <columns>
-          <TableColumn prefWidth="96.0" text="ID" />
-          <TableColumn prefWidth="205.0" text="Nombre" />
-            <TableColumn prefWidth="119.0" text="País" />
-            <TableColumn prefWidth="189.0" text="Distrito" />
-            <TableColumn prefWidth="267.0" text="Population" />
+          <TableColumn fx:id="colID" prefWidth="96.0" text="ID" />
+          <TableColumn fx:id="colNomb" prefWidth="205.0" text="Nombre" />
+            <TableColumn fx:id="colPais" prefWidth="119.0" text="País" />
+            <TableColumn fx:id="colDistri" prefWidth="189.0" text="Distrito" />
+            <TableColumn fx:id="colPobla" prefWidth="267.0" text="Población" />
         </columns>
       </TableView>
+      <JFXButton fx:id="btn_Volver" layoutX="940.0" layoutY="599.0" onAction="#back" prefHeight="25.0" prefWidth="87.0" style="-fx-background-color: orange;" text="Volver" />
    </children>
 </AnchorPane>
