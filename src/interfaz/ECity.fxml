@@ -6,7 +6,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="511.0" prefWidth="786.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ECityController">
    <children>
-      <TableView fx:id="tableCity" layoutY="14.0" prefHeight="436.0" prefWidth="786.0" style="-fx-background-color: gray;">
+      <TableView fx:id="tableCity" layoutX="9.0" layoutY="14.0" prefHeight="351.0" prefWidth="768.0" style="-fx-background-color: gray;">
         <columns>
           <TableColumn fx:id="colID" prefWidth="66.0" text="ID" />
           <TableColumn fx:id="colNomb" prefWidth="142.0" text="Name" />
