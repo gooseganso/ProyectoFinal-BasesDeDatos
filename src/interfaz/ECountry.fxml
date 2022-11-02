@@ -4,26 +4,21 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="511.0" prefWidth="786.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="controller.ECountryController">
+<AnchorPane id="AnchorPane" prefHeight="511.0" prefWidth="786.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ECountryController">
    <children>
-      <TableView layoutX="9.0" layoutY="14.0" prefHeight="351.0" prefWidth="768.0">
+      <TableView fx:id="tableCountry" layoutX="9.0" layoutY="14.0" prefHeight="351.0" prefWidth="768.0" style="-fx-background-color: gray;">
         <columns>
-          <TableColumn prefWidth="58.0" text="Code" />
-          <TableColumn prefWidth="102.0" text="Name" />
-            <TableColumn prefWidth="96.0" text="Continent" />
-            <TableColumn prefWidth="100.0" text="Region" />
-            <TableColumn prefWidth="79.0" text="SurfaceArea" />
-            <TableColumn prefWidth="65.0" text="IndepYEar" />
-            <TableColumn prefWidth="70.0" text="Population" />
-            <TableColumn prefWidth="49.0" text="LifeExp" />
-            <TableColumn prefWidth="56.0" text="PIB" />
-            <TableColumn prefWidth="49.0" text="PIB2" />
-            <TableColumn prefWidth="75.0" text="LocalName" />
-            <TableColumn prefWidth="75.0" text="Gobierno" />
-            <TableColumn prefWidth="75.0" text="Cabeza de estado" />
-            <TableColumn prefWidth="75.0" text="Capital" />
-            <TableColumn prefWidth="75.0" text="Code 2" />
+          <TableColumn fx:id="Code" prefWidth="58.0" text="Code" />
+          <TableColumn fx:id="Name" prefWidth="102.0" text="Name" />
+            <TableColumn fx:id="Continent" prefWidth="96.0" text="Continent" />
+            <TableColumn fx:id="Region" prefWidth="100.0" text="Region" />
+            <TableColumn fx:id="SurfaceArea" prefWidth="79.0" text="SurfaceArea" />
+            <TableColumn fx:id="IndepYear" prefWidth="65.0" text="IndepYear" />
+            <TableColumn fx:id="Population" prefWidth="70.0" text="Population" />
+            <TableColumn fx:id="LifeExp" prefWidth="49.0" text="LifeExp" />
+            <TableColumn fx:id="PIB" prefWidth="56.0" text="PIB" />
+            <TableColumn fx:id="HeadOfState" prefWidth="75.0" text="Cabeza de estado" />
+            <TableColumn fx:id="Capital" prefWidth="75.0" text="Capital" />
         </columns>
       </TableView>
    </children>
