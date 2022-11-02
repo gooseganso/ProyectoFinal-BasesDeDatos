@@ -5,10 +5,12 @@
 package controller;
 
 import com.jfoenix.controls.JFXButton;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -21,8 +23,6 @@ import javafx.scene.layout.AnchorPane;
 public class HLanguageController implements Initializable {
 
     @FXML
-    private AnchorPane city_Crud;
-    @FXML
     private JFXButton btn_Pcrear;
     @FXML
     private JFXButton btn_ModificarP;
@@ -30,6 +30,8 @@ public class HLanguageController implements Initializable {
     private JFXButton btn_EliminarP;
     @FXML
     private JFXButton btn_Buscar;
+    @FXML
+    private AnchorPane language_Crud;
 
     /**
      * Initializes the controller class.
@@ -40,7 +42,11 @@ public class HLanguageController implements Initializable {
     }    
 
     @FXML
-    private void crear(MouseEvent event) {
+    private void crear(MouseEvent event) throws IOException
+    {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/interfaz/CLanguage.fxml"));
+           
+         language_Crud.getChildren().setAll(pane);
     }
 
     @FXML

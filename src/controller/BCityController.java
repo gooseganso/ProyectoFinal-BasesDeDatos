@@ -49,9 +49,7 @@ public class BCityController implements Initializable {
     private AnchorPane rootPane;
     @FXML
     private JFXButton btn_Volver;
-    private conection conexion;
-    private Connection cn;
-    private Statement st;
+    private LlenarTablas llenar;
     ObservableList<City> misCities = FXCollections.observableArrayList();
 
     /**
@@ -60,7 +58,8 @@ public class BCityController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-       this.misCities = FXCollections.observableArrayList();
+       this.llenar= new LlenarTablas(); 
+       this.misCities=this.llenar.llenarTablaCity();
        this.modelaTabla();
     }
     public void constructorNuevo(ArrayList<Country> caso) 
@@ -77,7 +76,8 @@ public class BCityController implements Initializable {
         rootPane.getChildren().setAll(pane);
     }
 
-    private void modelaTabla() {
+    private void modelaTabla() 
+    {
        this.llenarTablaCities();
        this.colID.setCellValueFactory(new PropertyValueFactory("ID"));
        this.colNomb.setCellValueFactory(new PropertyValueFactory("name"));
@@ -88,23 +88,8 @@ public class BCityController implements Initializable {
         
     }
 
-    private void llenarTablaCities() {
-        this.conexion = new conection();
-        this.cn = this.conexion.getconection();
-        
-        try
-        {
-        ResultSet rs= cn.createStatement().executeQuery("Select * from city");
-        
-        while (rs.next())
-        {
-          misCities.add(new City(rs.getInt("ID"),rs.getString("Name"),rs.getString("CountryCode"),rs.getString("District"),rs.getInt("Population")));
-        }
-        }
-        catch(Exception e)
-                     {
-                      System.err.println("Error: " +e);
-                     }
+    private void llenarTablaCities() 
+    {
       tableCity.setItems(misCities);
     }
     

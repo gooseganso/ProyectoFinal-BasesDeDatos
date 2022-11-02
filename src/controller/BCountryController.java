@@ -9,24 +9,17 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.Vector;
-import java.sql.Connection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import tablas.Country;
-import conection.conection;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.ResultSet;
  
 /**
  * FXML Controller class
@@ -73,9 +66,8 @@ public class BCountryController implements Initializable {
     private TableColumn<Country, ?> Code2;
     @FXML
     private TableColumn<Country, ?> Capital;
-    private conection conexion;
-    private Connection cn;
-    private Statement st;
+    private LlenarTablas llenar;
+    
     ObservableList<Country> misCountry = FXCollections.observableArrayList();
     
     /**
@@ -84,8 +76,8 @@ public class BCountryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-        
-        this.misCountry = FXCollections.observableArrayList();
+        this.llenar= new LlenarTablas();
+        this.misCountry = this.llenar.llenarTablaPaises();
         this.modelaTabla();
         // TODO
     }    
@@ -133,22 +125,6 @@ public class BCountryController implements Initializable {
     
     public void llenarTablaPaises() 
     {
-        this.conexion = new conection();
-        this.cn = this.conexion.getconection();
-        
-        try
-        {
-        ResultSet rs= cn.createStatement().executeQuery("Select * from country");
-        
-        while (rs.next())
-        {
-          misCountry.add(new Country(rs.getString("Code"),rs.getString("Name"),rs.getString("Continent"),rs.getString("Region"),rs.getFloat("SurfaceArea"),rs.getInt("IndepYear"),rs.getInt("Population"),rs.getFloat("LifeExpectancy"),rs.getFloat("GNP"),rs.getFloat("GNPOld"),rs.getString("LocalName"),rs.getString("GovernmentForm"),rs.getString("HeadOfState"),rs.getString("Capital"),rs.getString("Code2")));
-        }
-        }
-        catch(Exception e)
-                     {
-                      System.err.println("Error: " +e);
-                     }
       tableC.setItems(misCountry);
     }
       
