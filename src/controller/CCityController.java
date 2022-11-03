@@ -10,6 +10,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import tablas.Country;
@@ -25,6 +26,8 @@ public class CCityController implements Initializable {
     private JFXComboBox<Country> comboPais;
     ObservableList <Country> misCountry = FXCollections.observableArrayList();
     private GestionCountry llenar;
+    @FXML
+    private JFXComboBox<?> comboDistric;
 
     /**
      * Initializes the controller class.
@@ -43,4 +46,16 @@ public class CCityController implements Initializable {
        this.comboPais.setConverter(new CountryConverter());
        
    }
+     
+
+    @FXML
+    private void doDistrict(ActionEvent event) 
+    {
+        
+        this.comboDistric.getItems().clear();
+        
+        this.comboDistric.setDisable(false);
+        
+        
+    }
 }
