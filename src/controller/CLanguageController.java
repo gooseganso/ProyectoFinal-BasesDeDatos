@@ -8,7 +8,6 @@ import com.jfoenix.controls.JFXComboBox;
 import conection.conection;
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -17,7 +16,8 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import tablas.Country;
 import Gestion.GestionCountry;
-import java.util.ArrayList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  * FXML Controller class
@@ -27,15 +27,13 @@ import java.util.ArrayList;
 public class CLanguageController implements Initializable {
 
     @FXML
-    private JFXComboBox<String> comboPais;
+    private JFXComboBox<Country> comboPais;
     @FXML
     private Spinner<Integer> ComboPorcentaje;
     @FXML
     private JFXComboBox<String> ComboOficial;
-    private conection conexion;
-    private Connection cn;
-    private Statement st;
-    private GestionCountry gestionC;
+    private GestionCountry llenar;
+    ObservableList <Country> misCountry = FXCollections.observableArrayList();
 
     /**
      * Initializes the controller class.
@@ -44,7 +42,8 @@ public class CLanguageController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) 
     
     {
-        this.gestionC=new GestionCountry();
+         this.llenar= new GestionCountry();
+         this.misCountry = this.llenar.llenarTablaPaises();
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100);
         
         ComboPorcentaje.setValueFactory(valueFactory);
@@ -59,10 +58,9 @@ public class CLanguageController implements Initializable {
     
    private void llenarComboPais()
    {
-        ArrayList<String> CodePais = this.gestionC.getPaisCode();
-        for (String cadena : CodePais) {
-            this.comboPais.getItems().add(cadena);
-        }
+       this.comboPais.getItems().addAll(misCountry);
+       this.comboPais.setConverter(new CountryConverter());
+       
    }
     
 }

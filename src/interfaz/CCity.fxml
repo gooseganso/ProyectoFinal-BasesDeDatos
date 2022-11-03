@@ -5,14 +5,13 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="511.0" prefWidth="786.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="controller.CCityController">
+<AnchorPane id="AnchorPane" prefHeight="511.0" prefWidth="786.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CCityController">
    <children>
       <Label layoutX="56.0" layoutY="127.0" prefHeight="22.0" prefWidth="95.0" text="Nombre" />
       <Label layoutX="56.0" layoutY="197.0" prefHeight="22.0" prefWidth="95.0" text="Código de país" />
       <Label layoutX="56.0" layoutY="265.0" prefHeight="22.0" prefWidth="95.0" text="Departamento" />
       <Label layoutX="56.0" layoutY="337.0" prefHeight="22.0" prefWidth="95.0" text="Población" />
-      <JFXComboBox layoutX="228.0" layoutY="196.0" prefHeight="25.0" prefWidth="169.0" />
+      <JFXComboBox fx:id="comboPais" layoutX="228.0" layoutY="196.0" prefHeight="25.0" prefWidth="169.0" />
       <TextField layoutX="228.0" layoutY="126.0" prefHeight="25.0" prefWidth="169.0" />
       <JFXComboBox layoutX="228.0" layoutY="264.0" prefHeight="25.0" prefWidth="169.0" />
       <TextField layoutX="228.0" layoutY="336.0" prefHeight="25.0" prefWidth="169.0" />

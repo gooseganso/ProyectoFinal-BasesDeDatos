@@ -5,11 +5,9 @@
 package Gestion;
 
 import conection.conection;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import tablas.Country;
@@ -18,6 +16,8 @@ import tablas.Country;
  *
  * @author Eduen
  */
+
+
 public class GestionCountry 
 {
     private conection conexion;
@@ -47,32 +47,7 @@ public class GestionCountry
     
        return this.misCountry;
     }
-     public ArrayList getPaisCode() 
     
-     {
-        this.conexion = new conection();
-        this.cn = this.conexion.getconection();
-        this.misCountry = FXCollections.observableArrayList();
-        String registro=null;
-        ArrayList<String> CodePais= new ArrayList<String>();
-        
-        try
-        {
-          ResultSet rs= cn.createStatement().executeQuery("Select * from country");
-          while (rs.next())
-            {
-          String[] campos = registro.split("_");
-          CodePais.add(campos[1]);
-            }
-        }
-        
-        catch (Exception e) 
-        {
-            System.out.println("Falló buscando la base datos");
-        }
-        
-        return CodePais;
-     }
     
 }
 

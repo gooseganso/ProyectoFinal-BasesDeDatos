@@ -4,9 +4,15 @@
  */
 package controller;
 
+import Gestion.GestionCountry;
+import com.jfoenix.controls.JFXComboBox;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import tablas.Country;
 
 /**
  * FXML Controller class
@@ -15,12 +21,26 @@ import javafx.fxml.Initializable;
  */
 public class CCityController implements Initializable {
 
+    @FXML
+    private JFXComboBox<Country> comboPais;
+    ObservableList <Country> misCountry = FXCollections.observableArrayList();
+    private GestionCountry llenar;
+
     /**
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+    public void initialize(URL url, ResourceBundle rb) 
+    {
+       this.llenar= new GestionCountry();
+       this.misCountry = this.llenar.llenarTablaPaises();
+       this.llenarComboPais();
     }    
     
+     private void llenarComboPais()
+   {
+       this.comboPais.getItems().addAll(misCountry);
+       this.comboPais.setConverter(new CountryConverter());
+       
+   }
 }
