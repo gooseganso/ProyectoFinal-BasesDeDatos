@@ -7,7 +7,9 @@ package Gestion;
 import conection.conection;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import tablas.City;
@@ -22,6 +24,8 @@ public class GestionCity {
     private Connection cn;
     private Statement st;
     ObservableList<City> misCities = FXCollections.observableArrayList();
+    private ArrayList<String> combosDistrito;
+    private String query;
     
     
     public ObservableList<City> llenarTablaCity() 
@@ -30,6 +34,7 @@ public class GestionCity {
         this.conexion = new conection();
         this.cn = this.conexion.getconection();
         this.misCities = FXCollections.observableArrayList();
+        
       try
         {
         ResultSet rc= cn.createStatement().executeQuery("Select * from city");
@@ -46,7 +51,31 @@ public class GestionCity {
       return this.misCities;
     }
     
-    
+    public ArrayList<String> codigoDistritos(String codigoPS)
+    {
+        this.conexion = new conection();
+        this.cn = this.conexion.getconection();
+        this.combosDistrito= new ArrayList<String>();
+        System.out.println("El código es "+codigoPS);
+        try{
+            this.st = this.cn.createStatement();
+            ResultSet rc= cn.createStatement().executeQuery("select district from city where countrycode='"+codigoPS+"'group by District");
+            System.out.print("Conexion estable");
+        
+            while(rc.next())
+                {
+                this.combosDistrito.add(rc.getString("district"));   
+                }
+            
+           
+        System.out.println(this.combosDistrito);
+           
+        }catch (SQLException e)
+        {
+             System.out.print("Conexion inestable");
+        }
+        return this.combosDistrito;
+    }
     
     
 }

@@ -14,6 +14,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import tablas.Country;
+import Gestion.GestionCity;
+import java.util.ArrayList;
+import javafx.util.StringConverter;
 
 /**
  * FXML Controller class
@@ -26,8 +29,10 @@ public class CCityController implements Initializable {
     private JFXComboBox<Country> comboPais;
     ObservableList <Country> misCountry = FXCollections.observableArrayList();
     private GestionCountry llenar;
+    private GestionCity district;
     @FXML
-    private JFXComboBox<?> comboDistric;
+    private JFXComboBox<String> comboDistric;
+    private ArrayList<String> combosDistrito;
 
     /**
      * Initializes the controller class.
@@ -47,15 +52,31 @@ public class CCityController implements Initializable {
        
    }
      
-
+    public Country comboPais()
+    {
+      Country codigoP= this.comboPais.getSelectionModel().getSelectedItem();
+      
+      return codigoP;
+              
+    }
+     
     @FXML
     private void doDistrict(ActionEvent event) 
     {
-        
-        this.comboDistric.getItems().clear();
-        
-        this.comboDistric.setDisable(false);
+        Country codigoP= this.comboPais.getSelectionModel().getSelectedItem();
+        String codigoPS=codigoP.getCode();
         
         
+        System.out.print(codigoPS);
+        
+       this.district= new GestionCity();
+        
+       this.comboDistric.getItems().clear();
+        
+       this.comboDistric.setDisable(false);
+        
+       this.combosDistrito= this.district.codigoDistritos(codigoPS);
+        
+       this.comboDistric.getItems().addAll(combosDistrito);
     }
 }
