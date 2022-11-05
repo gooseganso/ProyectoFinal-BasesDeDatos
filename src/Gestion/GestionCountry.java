@@ -7,7 +7,9 @@ package Gestion;
 import conection.conection;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import tablas.Country;
@@ -24,6 +26,7 @@ public class GestionCountry
     private Connection cn;
     private Statement st;
     ObservableList<Country> misCountry = FXCollections.observableArrayList();
+    private ArrayList<String> combosPais;
     
     public ObservableList<Country> llenarTablaPaises() 
     {
@@ -46,6 +49,27 @@ public class GestionCountry
                      }
     
        return this.misCountry;
+    }
+    
+    public ArrayList<String> getCodigosPais() 
+    {
+     this.conexion = new conection();
+     this.cn = this.conexion.getconection();
+     this.combosPais= new ArrayList<String>();
+      try{
+            this.st = this.cn.createStatement();
+            ResultSet rc= cn.createStatement().executeQuery("select code from country");
+            System.out.print("Conexion estable");
+        
+            while(rc.next())
+                {
+                this.combosPais.add(rc.getString("code"));   
+                }
+          }catch (SQLException e)
+        {
+             System.out.print("Conexion inestable");
+        }
+        return this.combosPais;
     }
     
     

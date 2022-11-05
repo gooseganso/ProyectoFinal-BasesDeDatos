@@ -16,6 +16,7 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import tablas.Country;
 import Gestion.GestionCountry;
+import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -27,13 +28,15 @@ import javafx.collections.ObservableList;
 public class CLanguageController implements Initializable {
 
     @FXML
-    private JFXComboBox<Country> comboPais;
+    private JFXComboBox<String> comboPais;
     @FXML
     private Spinner<Integer> ComboPorcentaje;
     @FXML
     private JFXComboBox<String> ComboOficial;
     private GestionCountry llenar;
     ObservableList <Country> misCountry = FXCollections.observableArrayList();
+    private ArrayList<String> combosPais;
+    private GestionCountry codp;
 
     /**
      * Initializes the controller class.
@@ -43,7 +46,8 @@ public class CLanguageController implements Initializable {
     
     {
          this.llenar= new GestionCountry();
-         this.misCountry = this.llenar.llenarTablaPaises();
+         this.codp= new GestionCountry();
+         this.combosPais= this.codp.getCodigosPais();
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100);
         
         ComboPorcentaje.setValueFactory(valueFactory);
@@ -58,9 +62,7 @@ public class CLanguageController implements Initializable {
     
    private void llenarComboPais()
    {
-       this.comboPais.getItems().addAll(misCountry);
-       this.comboPais.setConverter(new CountryConverter());
-       
+      this.comboPais.getItems().addAll(combosPais);   
    }
     
 }

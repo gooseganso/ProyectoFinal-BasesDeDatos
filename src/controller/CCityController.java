@@ -26,9 +26,10 @@ import javafx.util.StringConverter;
 public class CCityController implements Initializable {
 
     @FXML
-    private JFXComboBox<Country> comboPais;
-    ObservableList <Country> misCountry = FXCollections.observableArrayList();
+    private JFXComboBox<String> comboPais;
+    private ArrayList<String> combosPais;
     private GestionCountry llenar;
+    private GestionCountry codp;
     private GestionCity district;
     @FXML
     private JFXComboBox<String> comboDistric;
@@ -40,43 +41,27 @@ public class CCityController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
+       this.codp= new GestionCountry();
        this.llenar= new GestionCountry();
-       this.misCountry = this.llenar.llenarTablaPaises();
+       this.combosPais= this.codp.getCodigosPais();
+       this.district= new GestionCity();
        this.llenarComboPais();
     }    
     
      private void llenarComboPais()
    {
-       this.comboPais.getItems().addAll(misCountry);
-       this.comboPais.setConverter(new CountryConverter());
-       
+       this.comboPais.getItems().addAll(combosPais);   
    }
      
-    public Country comboPais()
-    {
-      Country codigoP= this.comboPais.getSelectionModel().getSelectedItem();
-      
-      return codigoP;
-              
-    }
-     
+  
     @FXML
     private void doDistrict(ActionEvent event) 
-    {
-        Country codigoP= this.comboPais.getSelectionModel().getSelectedItem();
-        String codigoPS=codigoP.getCode();
-        
-        
-        System.out.print(codigoPS);
-        
-       this.district= new GestionCity();
-        
-       this.comboDistric.getItems().clear();
-        
-       this.comboDistric.setDisable(false);
-        
-       this.combosDistrito= this.district.codigoDistritos(codigoPS);
-        
-       this.comboDistric.getItems().addAll(combosDistrito);
+   {
+      String codigoPS=this.comboPais.getSelectionModel().getSelectedItem();
+          
+      this.comboDistric.getItems().clear();
+      this.comboDistric.setDisable(false);
+      this.combosDistrito= this.district.codigoDistritos(codigoPS);
+      this.comboDistric.getItems().addAll(combosDistrito);
     }
-}
+  }
