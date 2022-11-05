@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import tablas.City;
 import tablas.Country;
 import tablas.CountryLanguage;
 
@@ -34,6 +35,7 @@ public class GestionCountry
     private Vector<CountryLanguage> idiomas;
     private ResultSetMetaData metaDatos;
     private ResultSet rs;
+    private Vector<City> capitales;
   
     
     public ObservableList<Country> llenarTablaPaises() 
@@ -42,6 +44,8 @@ public class GestionCountry
         this.cn = this.conexion.getconection();
         this.misCountry = FXCollections.observableArrayList();
         this.idiomas = new Vector();
+        this.capitales = new Vector();
+        this.getCapitales();
         this.getLenguajes();
         
         
@@ -51,7 +55,12 @@ public class GestionCountry
         
         while (rs.next())
         {
-          misCountry.add(new Country(rs.getString("Code"),rs.getString("Name"),rs.getString("Continent"),rs.getString("Region"),rs.getFloat("SurfaceArea"),rs.getInt("IndepYear"),rs.getInt("Population"),rs.getFloat("LifeExpectancy"),rs.getFloat("GNP"),rs.getFloat("GNPOld"),rs.getString("LocalName"),rs.getString("GovernmentForm"),rs.getString("HeadOfState"),rs.getString("Capital"),rs.getString("Code2"),this.buscarLenguaje(rs)));
+          misCountry.add(new Country(rs.getString("Code"),rs.getString("Name"),rs.getString("Continent")
+                  ,rs.getString("Region"),rs.getFloat("SurfaceArea"),rs.getInt("IndepYear")
+                  ,rs.getInt("Population"),rs.getFloat("LifeExpectancy"),rs.getFloat("GNP")
+                  ,rs.getFloat("GNPOld"),rs.getString("LocalName"),rs.getString("GovernmentForm")
+                  ,rs.getString("HeadOfState"),this.validarCapital(rs),rs.getString("Code2")
+                  ,this.buscarLenguaje(rs)));
         }
         }
         catch(Exception e)
@@ -115,6 +124,43 @@ public class GestionCountry
             System.out.println("Error: " + e);
         }
     }
+    private void getCapitales(){
+        City ciudad;
+        try {
+            this.st = this.cn.createStatement();
+            this.rs = this.st.executeQuery("select p.capital, c.name from city as c, country as p where c.ID = p.capital");
+            this.metaDatos = this.rs.getMetaData();
+            while(this.rs.next()){
+                ciudad = new City(Integer.parseInt(this.rs.getString(1)), this.rs.getString(2), "", "", 0, "");
+                this.capitales.add(ciudad);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error: " + e);
+        }
+    }
+    
+    private String buscarCapital(ResultSet resultado){
+        String capital = "";
+        for(City ciudad : this.capitales){
+            try {
+                if(ciudad.getID() == Integer.parseInt(resultado.getString(14)))
+                    capital = ciudad.getName();
+            } catch (SQLException e) {
+            System.out.println("Error: " + e);
+            }
+        }
+        return capital;
+    }
+    private String validarCapital(ResultSet resultado) throws SQLException{
+        String state = "";
+        if(resultado.getString(14) == null)
+                state = "Sin definir";
+            else
+                state=(this.buscarCapital(resultado));
+        
+        return state;
+    }
+    
     
     
     
