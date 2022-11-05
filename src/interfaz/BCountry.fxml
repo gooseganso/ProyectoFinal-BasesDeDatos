@@ -24,7 +24,8 @@
             <TableColumn fx:id="GovermentForm" prefWidth="103.0" text="GovermentForm" />
             <TableColumn fx:id="HeadOfState" prefWidth="105.0" text="Cabeza de Estado" />
             <TableColumn fx:id="Capital" minWidth="0.0" prefWidth="73.0" text="Capital" />
-            <TableColumn fx:id="Code2" prefWidth="27.0" text="Code 2" />
+            <TableColumn fx:id="Code2" minWidth="2.39990234375" prefWidth="22.39992675781241" text="Code 2" />
+            <TableColumn fx:id="lengua" minWidth="2.39990234375" prefWidth="22.39992675781241" text="Lenguaje" />
         </columns>
       </TableView>
       <JFXRadioButton layoutX="55.0" layoutY="527.0" />

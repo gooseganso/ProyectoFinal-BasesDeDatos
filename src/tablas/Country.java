@@ -16,6 +16,7 @@ public class Country {
     private String headOfState;
     private String capital;
     private String code2;
+    private String lenguajeOficial;
  
 
     public Country() {
@@ -34,10 +35,11 @@ public class Country {
         this.headOfState = "";
         this.capital = "";
         this.code2 = "";
+        this.lenguajeOficial = "";
   
     }
 
-    public Country(String code, String name, String continent, String region, float surfaceArea, int indepYear, int population, float lifeExpectancy, float GNP, float GNPOld, String localName, String governmentForm, String headOfState, String capital, String code2) {
+    public Country(String code, String name, String continent, String region, float surfaceArea, int indepYear, int population, float lifeExpectancy, float GNP, float GNPOld, String localName, String governmentForm, String headOfState, String capital, String code2, String lenguajeOficial) {
         this.code = code;
         this.name = name;
         this.continent = continent;
@@ -53,7 +55,16 @@ public class Country {
         this.headOfState = headOfState;
         this.capital = capital;
         this.code2 = code2;
+        this.lenguajeOficial= lenguajeOficial;
      
+    }
+
+    public String getLenguajeOficial() {
+        return lenguajeOficial;
+    }
+
+    public void setLenguajeOficial(String lenguajeOficial) {
+        this.lenguajeOficial = lenguajeOficial;
     }
 
     public String getCode() {
@@ -182,6 +193,6 @@ public class Country {
 
     @Override
     public String toString() {
-        return this.code + "_" + this.name + "_" + this.continent + "_" + this.region + "_" + this.surfaceArea + "_" + this.indepYear + "_" + this.population + "_" + this.lifeExpectancy + "_" + this.GNP + "_" + this.GNPOld + "_" + this.localName + "_" + this.governmentForm + "_" + this.headOfState + "_" + this.capital + "_" + this.code2;
+        return this.code + "_" + this.name + "_" + this.continent + "_" + this.region + "_" + this.surfaceArea + "_" + this.indepYear + "_" + this.population + "_" + this.lifeExpectancy + "_" + this.GNP + "_" + this.GNPOld + "_" + this.localName + "_" + this.governmentForm + "_" + this.headOfState + "_" + this.capital + "_" + this.code2 + "_" + this.lenguajeOficial;
     }
 }

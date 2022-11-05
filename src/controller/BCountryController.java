@@ -71,6 +71,8 @@ public class BCountryController implements Initializable {
     private GestionCountry llenar;
     
     ObservableList<Country> misCountry = FXCollections.observableArrayList();
+    @FXML
+    private TableColumn<Country, ?> lengua;
     
     /**
      * Initializes the controller class.
@@ -120,6 +122,7 @@ public class BCountryController implements Initializable {
         this.HeadOfState.setCellValueFactory(new PropertyValueFactory("headOfState"));
         this.Capital.setCellValueFactory(new PropertyValueFactory("capital"));
         this.Code2.setCellValueFactory(new PropertyValueFactory("code2"));
+        this.lengua.setCellValueFactory(new PropertyValueFactory("lenguajeOficial"));
         
         
     }
