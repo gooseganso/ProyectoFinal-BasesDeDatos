@@ -14,18 +14,18 @@
           <TableColumn fx:id="Name" prefWidth="57.0" text="Name" />
             <TableColumn fx:id="Continent" prefWidth="61.0" text="Continent" />
             <TableColumn fx:id="Region" prefWidth="73.0" text="Region" />
-            <TableColumn fx:id="SurfaceArea" prefWidth="84.0" text="SurfaceArea" />
-            <TableColumn fx:id="IndepYear" prefWidth="68.0" text="IndepYear" />
+            <TableColumn fx:id="SurfaceArea" minWidth="0.0" prefWidth="83.20001220703125" resizable="false" text="Surface Area" />
+            <TableColumn fx:id="IndepYear" minWidth="0.0" prefWidth="68.80001831054688" resizable="false" text=" Indep Year" />
             <TableColumn fx:id="Population" prefWidth="75.0" text="Population" />
             <TableColumn fx:id="LifeExp" prefWidth="96.0" text="Life Expectancy" />
             <TableColumn fx:id="GNP" minWidth="0.0" prefWidth="37.0" text="GNP" />
-            <TableColumn fx:id="GNPOld" prefWidth="53.0" text="GNPOld" />
-            <TableColumn fx:id="LocalName" prefWidth="83.0" text="LocalName" />
-            <TableColumn fx:id="GovermentForm" prefWidth="103.0" text="GovermentForm" />
-            <TableColumn fx:id="HeadOfState" prefWidth="105.0" text="Cabeza de Estado" />
+            <TableColumn fx:id="GNPOld" prefWidth="53.0" text="GNP Old" />
+            <TableColumn fx:id="LocalName" prefWidth="83.0" text="Local Name" />
+            <TableColumn fx:id="GovermentForm" prefWidth="103.0" text="Goverment Form" />
+            <TableColumn fx:id="HeadOfState" prefWidth="150.0" text="Head of State" />
             <TableColumn fx:id="Capital" minWidth="0.0" prefWidth="73.0" text="Capital" />
-            <TableColumn fx:id="Code2" minWidth="2.39990234375" prefWidth="22.39992675781241" text="Code 2" />
-            <TableColumn fx:id="lengua" minWidth="2.39990234375" prefWidth="22.39992675781241" text="Lenguaje" />
+            <TableColumn fx:id="Code2" prefWidth="53.0" resizable="false" text="Code 2" />
+            <TableColumn fx:id="lengua" minWidth="103.0" prefWidth="22.39992675781241" text="Lenguaje" />
         </columns>
       </TableView>
       <JFXRadioButton layoutX="55.0" layoutY="527.0" />

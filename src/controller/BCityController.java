@@ -76,6 +76,7 @@ public class BCityController implements Initializable {
     private void modelaTabla() 
     {
        this.llenarTablaCities();
+       
        this.colID.setCellValueFactory(new PropertyValueFactory("ID"));
        this.colNomb.setCellValueFactory(new PropertyValueFactory("name"));
        this.colPais.setCellValueFactory(new PropertyValueFactory("countryCode"));
