@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="645.0" prefWidth="1096.0" style="-fx-background-color: #3D4956;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BLanguageController">
+
+<AnchorPane id="AnchorPane" prefHeight="511.0" prefWidth="786.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="controller.ELanguageController">
    <children>
-      <TableView fx:id="tableLang" layoutX="120.0" layoutY="66.0" prefHeight="267.0" prefWidth="877.0" style="-fx-background-color: gray;">
+      <TableView fx:id="tableLang" layoutY="40.0" prefHeight="267.0" prefWidth="851.0" style="-fx-background-color: gray;">
          <columns>
             <TableColumn fx:id="colCountry" prefWidth="161.0" text="País" />
             <TableColumn fx:id="colLang" prefWidth="215.0" text="Lenguaje" />
@@ -15,6 +15,5 @@
             <TableColumn fx:id="colPorcentaje" prefWidth="253.0" text="Porcentaje" />
          </columns>
       </TableView>
-      <JFXButton fx:id="btn_Volver" layoutX="945.0" layoutY="572.0" onAction="#volver" style="-fx-background-color: orange;" text="Volver" />
    </children>
 </AnchorPane>

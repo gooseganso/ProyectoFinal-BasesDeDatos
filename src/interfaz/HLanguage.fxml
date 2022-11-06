@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="645.0" prefWidth="1096.0" style="-fx-background-color: #3D4956;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HLanguageController">
+<AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="645.0" prefWidth="1096.0" style="-fx-background-color: #3D4956;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HLanguageController">
    <children>
       <AnchorPane fx:id="language_Crud" layoutX="296.0" layoutY="121.0" prefHeight="511.0" prefWidth="786.0" style="-fx-background-color: gray;" />
       <Label layoutX="53.0" layoutY="88.0" text="Lenguajes" textFill="WHITE">

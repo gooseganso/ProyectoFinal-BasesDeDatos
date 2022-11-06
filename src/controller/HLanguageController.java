@@ -32,6 +32,8 @@ public class HLanguageController implements Initializable {
     private JFXButton btn_Buscar;
     @FXML
     private AnchorPane language_Crud;
+    @FXML
+    private AnchorPane rootPane;
 
     /**
      * Initializes the controller class.
@@ -54,15 +56,27 @@ public class HLanguageController implements Initializable {
     }
 
     @FXML
-    private void doModify(ActionEvent event) {
+    private void doModify(ActionEvent event) throws IOException 
+    {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/interfaz/MLanguage.fxml"));
+           
+        language_Crud.getChildren().setAll(pane);
     }
 
     @FXML
-    private void doEliminar(ActionEvent event) {
+    private void doEliminar(ActionEvent event) throws IOException 
+    {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/interfaz/ELanguage.fxml"));
+           
+        language_Crud.getChildren().setAll(pane);
     }
 
     @FXML
-    private void doBuscar(ActionEvent event) {
+    private void doBuscar(ActionEvent event) throws IOException 
+    {
+         AnchorPane pane = FXMLLoader.load(getClass().getResource("/interfaz/BLanguage.fxml"));
+           
+         rootPane.getChildren().setAll(pane);
     }
     
 }
