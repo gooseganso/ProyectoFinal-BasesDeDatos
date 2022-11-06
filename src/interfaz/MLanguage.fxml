@@ -7,19 +7,20 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="511.0" prefWidth="786.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="controller.MLanguageController">
+<AnchorPane id="AnchorPane" prefHeight="511.0" prefWidth="786.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MLanguageController">
    <children>
-      <JFXComboBox fx:id="comboPais" layoutX="151.0" layoutY="146.0" prefHeight="25.0" prefWidth="149.0" />
-      <TextField layoutX="151.0" layoutY="211.0" />
-      <Spinner fx:id="ComboPorcentaje" layoutX="151.0" layoutY="320.0" />
-      <Label layoutX="44.0" layoutY="150.0" text="Código de país" />
-      <Label layoutX="70.0" layoutY="215.0" text="Lenguaje" />
-      <Label layoutX="80.0" layoutY="270.0" text="Oficcial" />
-      <JFXComboBox fx:id="ComboOficial" layoutX="151.0" layoutY="266.0" prefHeight="25.0" prefWidth="149.0" />
-      <Label layoutX="66.0" layoutY="324.0" text="Porcentaje" />
+      <JFXComboBox fx:id="comboPais" disable="true" layoutX="151.0" layoutY="208.0" prefHeight="25.0" prefWidth="149.0" />
+      <TextField fx:id="textLanguage" editable="false" layoutX="151.0" layoutY="267.0" />
+      <Spinner fx:id="ComboPorcentaje" disable="true" editable="true" layoutX="151.0" layoutY="367.0" />
+      <Label layoutX="44.0" layoutY="225.0" text="Código de país" />
+      <Label layoutX="70.0" layoutY="271.0" text="Lenguaje" />
+      <Label layoutX="84.0" layoutY="325.0" text="Oficcial" />
+      <JFXComboBox fx:id="ComboOficial" disable="true" layoutX="151.0" layoutY="308.0" prefHeight="25.0" prefWidth="149.0" />
+      <Label layoutX="66.0" layoutY="371.0" text="Porcentaje" />
       <JFXButton layoutX="604.0" layoutY="435.0" style="-fx-background-color: orange;" text="Modificar" />
-      <Label layoutX="186.0" layoutY="65.0" text="Seleccione el país" />
-      <JFXComboBox fx:id="comboPais1" layoutX="307.0" layoutY="61.0" prefHeight="25.0" prefWidth="149.0" />
+      <Label layoutX="191.0" layoutY="36.0" text="Seleccione el país" />
+      <JFXComboBox fx:id="comboPais1" layoutX="319.0" layoutY="32.0" onAction="#doLlenar" prefHeight="25.0" prefWidth="149.0" />
+      <Label layoutX="119.0" layoutY="92.0" text="Seleccione el lenguaje a modificar" />
+      <JFXComboBox fx:id="comboLang1" disable="true" layoutX="319.0" layoutY="88.0" onAction="#doLlenarLang" prefHeight="25.0" prefWidth="149.0" />
    </children>
 </AnchorPane>
