@@ -7,7 +7,9 @@ package Gestion;
 import conection.conection;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import tablas.CountryLanguage;
@@ -23,6 +25,7 @@ public class GestionLanguage {
     private Statement st;
     ObservableList<CountryLanguage> misLanguages = FXCollections.observableArrayList();
     private GestionCountry gestion;
+     private ArrayList<String> combosLanguages;
     
      public ObservableList<CountryLanguage> llenarTablaLanguage() 
     {
@@ -48,6 +51,32 @@ public class GestionLanguage {
       return this.misLanguages;
     }
      
-     
+    public ArrayList<String> nomLanguages(String codigoPS)
+    {
+        this.conexion = new conection();
+        this.cn = this.conexion.getconection();
+        this.combosLanguages= new ArrayList<String>();
+        System.out.println("El código es "+codigoPS);
+        try{
+            this.st = this.cn.createStatement();
+            ResultSet rc= cn.createStatement().executeQuery("select language from countrylanguage where countrycode='"+codigoPS+"'group by language");
+            System.out.print("Conexion estable");
+        
+            while(rc.next())
+                {
+                this.combosLanguages.add(rc.getString("language"));   
+                }
+            
+           
+        System.out.println(this.combosLanguages);
+           
+        }catch (SQLException e)
+        {
+             System.out.print("Conexion inestable");
+        }
+        
+        return this.combosLanguages; 
+   }
+    
     
 }

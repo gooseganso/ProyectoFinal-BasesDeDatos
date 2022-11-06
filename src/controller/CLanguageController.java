@@ -30,7 +30,7 @@ public class CLanguageController implements Initializable {
     @FXML
     private JFXComboBox<String> comboPais;
     @FXML
-    private Spinner<Integer> ComboPorcentaje;
+    private Spinner<Double> ComboPorcentaje;
     @FXML
     private JFXComboBox<String> ComboOficial;
     private GestionCountry llenar;
@@ -48,11 +48,11 @@ public class CLanguageController implements Initializable {
          this.llenar= new GestionCountry();
          this.codp= new GestionCountry();
          this.combosPais= this.codp.getCodigosPais();
-        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100);
+        SpinnerValueFactory<Double> valueFactory = new SpinnerValueFactory.DoubleSpinnerValueFactory(0.5, 100);
         
         ComboPorcentaje.setValueFactory(valueFactory);
       
-         valueFactory.setValue(1);
+         valueFactory.setValue(0.0);
          this.ComboOficial.getItems().add("Sí");
          this.ComboOficial.getItems().add("No");
          

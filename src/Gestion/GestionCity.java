@@ -109,7 +109,8 @@ public class GestionCity {
         }
         return this.combosCiudad;
     }
-    public String getDistrict (String nomCiudad){
+    public String getDistrict (String nomCiudad)
+    {
         this.conexion = new conection();
         this.cn = this.conexion.getconection();
         String distrito = "";

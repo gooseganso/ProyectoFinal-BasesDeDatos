@@ -7,12 +7,11 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="511.0" prefWidth="786.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="controller.CLanguageController">
+<AnchorPane id="AnchorPane" prefHeight="511.0" prefWidth="786.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CLanguageController">
    <children>
       <JFXComboBox fx:id="comboPais" layoutX="141.0" layoutY="136.0" prefHeight="25.0" prefWidth="149.0" />
       <TextField layoutX="141.0" layoutY="201.0" />
-      <Spinner fx:id="ComboPorcentaje" layoutX="141.0" layoutY="310.0" />
+      <Spinner fx:id="ComboPorcentaje" editable="true" layoutX="141.0" layoutY="310.0" />
       <Label layoutX="34.0" layoutY="140.0" text="Código de país" />
       <Label layoutX="60.0" layoutY="205.0" text="Lenguaje" />
       <Label layoutX="70.0" layoutY="260.0" text="Oficcial" />
