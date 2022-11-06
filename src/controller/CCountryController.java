@@ -6,13 +6,18 @@ package controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXSlider;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -29,6 +34,30 @@ public class CCountryController implements Initializable {
     private JFXComboBox<String> boxRegion;
     @FXML
     private JFXButton btn_CrearP;
+    @FXML
+    private TextField tagNom;
+    @FXML
+    private TextField tagCod;
+    @FXML
+    private TextField tagCod2;
+    @FXML
+    private JFXSlider sliderInd;
+    @FXML
+    private TextField tagLocNom;
+    @FXML
+    private TextField tagPresi;
+    @FXML
+    private TextField tagPobla;
+    @FXML
+    private TextField tagPIB;
+    @FXML
+    private TextField tagPIB2;
+    @FXML
+    private TextField tagCapi;
+    @FXML
+    private TextField tagSuperfi;
+    @FXML
+    private Label tagInd;
 
     /**
      * Initializes the controller class.
@@ -52,6 +81,15 @@ public class CCountryController implements Initializable {
       this.boxContinente.getItems().add("Oceania");
       this.boxContinente.getItems().add("Antartica");
       this.boxContinente.getItems().add("South America");
+      
+       this.sliderInd.adjustValue(0);
+        this.sliderInd.setDisable(false);
+        this.sliderInd.valueProperty().addListener(new ChangeListener<Number>(){
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+               tagInd.setText(Integer.toString((int)sliderInd.getValue()));
+            }
+        });
       
       
       

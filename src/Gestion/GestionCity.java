@@ -167,6 +167,29 @@ public class GestionCity {
         }
         return pais;
     }
+     public String getCapi(String codCity){
+         
+        this.conexion = new conection();
+        this.cn = this.conexion.getconection();
+        String capi ="";
+        System.out.println("El código es "+codCity);
+        try{
+            this.st = this.cn.createStatement();
+            ResultSet rc= cn.createStatement().executeQuery("select name from city where id='"+codCity+"'group by 1");
+            System.out.print("Conexion estable");
+            while(rc.next())
+                {
+                capi=rc.getString("name");
+                }
+            
+           
+        }catch (SQLException e)
+        {
+             System.out.print("Conexion inestable");
+        }
+         return capi;
+     }
+     
     
     
 }

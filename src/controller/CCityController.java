@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import Gestion.GestionCity;
 import java.util.ArrayList;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -30,6 +31,10 @@ public class CCityController implements Initializable {
     @FXML
     private JFXComboBox<String> comboDistric;
     private ArrayList<String> combosDistrito;
+    @FXML
+    private TextField tagNom;
+    @FXML
+    private TextField tagPobla;
 
     /**
      * Initializes the controller class.

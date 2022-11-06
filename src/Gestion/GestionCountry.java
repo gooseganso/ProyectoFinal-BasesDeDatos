@@ -151,7 +151,7 @@ public class GestionCountry
         }
         return capital;
     }
-    private String validarCapital(ResultSet resultado) throws SQLException{
+    public String validarCapital(ResultSet resultado) throws SQLException{
         String state = "";
         if(resultado.getString(14) == null)
                 state = "Sin definir";
@@ -160,7 +160,303 @@ public class GestionCountry
         
         return state;
     }
+     public String getCode2(String codPais){
+         
+        this.conexion = new conection();
+        this.cn = this.conexion.getconection();
+        String code2 ="";
+        System.out.println("El código es "+codPais);
+        try{
+            this.st = this.cn.createStatement();
+            ResultSet rc= cn.createStatement().executeQuery("select code2 from country where code='"+codPais+"'group by 1");
+            System.out.print("Conexion estable");
+            while(rc.next())
+                {
+                code2=rc.getString("code2");
+                }
+            
+           
+        }catch (SQLException e)
+        {
+             System.out.print("Conexion inestable");
+        }
+         return code2;
+     }
+     public String getName(String codPais){
+         
+        this.conexion = new conection();
+        this.cn = this.conexion.getconection();
+        String name ="";
+        System.out.println("El código es "+codPais);
+        try{
+            this.st = this.cn.createStatement();
+            ResultSet rc= cn.createStatement().executeQuery("select name from country where code='"+codPais+"'group by 1");
+            System.out.print("Conexion estable");
+            while(rc.next())
+                {
+                name=rc.getString("name");
+                }
+            
+           
+        }catch (SQLException e)
+        {
+             System.out.print("Conexion inestable");
+        }
+         return name;
+     }
+     
+     public String getLocName(String codPais){
+         
+        this.conexion = new conection();
+        this.cn = this.conexion.getconection();
+        String name ="";
+        System.out.println("El código es "+codPais);
+        try{
+            this.st = this.cn.createStatement();
+            ResultSet rc= cn.createStatement().executeQuery("select localName from country where code='"+codPais+"'group by 1");
+            System.out.print("Conexion estable");
+            while(rc.next())
+                {
+                name=rc.getString("localName");
+                }
+            
+           
+        }catch (SQLException e)
+        {
+             System.out.print("Conexion inestable");
+        }
+         return name;
+     }
+     public String getRegion(String codPais){
+         
+        this.conexion = new conection();
+        this.cn = this.conexion.getconection();
+        String reg ="";
+        System.out.println("El código es "+codPais);
+        try{
+            this.st = this.cn.createStatement();
+            ResultSet rc= cn.createStatement().executeQuery("select region from country where code='"+codPais+"'group by 1");
+            System.out.print("Conexion estable");
+            while(rc.next())
+                {
+                reg=rc.getString("region");
+                }
+            
+           
+        }catch (SQLException e)
+        {
+             System.out.print("Conexion inestable");
+        }
+         return reg;
+     }
+     
+     public String getContinente(String codPais){
+         
+        this.conexion = new conection();
+        this.cn = this.conexion.getconection();
+        String cont ="";
+        System.out.println("El código es "+codPais);
+        try{
+            this.st = this.cn.createStatement();
+            ResultSet rc= cn.createStatement().executeQuery("select continent from country where code='"+codPais+"'group by 1");
+            System.out.print("Conexion estable");
+            while(rc.next())
+                {
+                cont=rc.getString("continent");
+                }
+            
+           
+        }catch (SQLException e)
+        {
+             System.out.print("Conexion inestable");
+        }
+         return cont;
+     }
+     public String getPobla(String codPais){
+         
+        this.conexion = new conection();
+        this.cn = this.conexion.getconection();
+        String pobla ="";
+        System.out.println("El código es "+codPais);
+        try{
+            this.st = this.cn.createStatement();
+            ResultSet rc= cn.createStatement().executeQuery("select population from country where code='"+codPais+"'group by 1");
+            System.out.print("Conexion estable");
+            while(rc.next())
+                {
+                pobla=rc.getString("population");
+                }
+            
+           
+        }catch (SQLException e)
+        {
+             System.out.print("Conexion inestable");
+        }
+         return pobla;
+     }
+     
+     public int getInd(String codPais){
+         
+        this.conexion = new conection();
+        this.cn = this.conexion.getconection();
+        int ind = 0;
+        System.out.println("El código es "+codPais);
+        try{
+            this.st = this.cn.createStatement();
+            ResultSet rc= cn.createStatement().executeQuery("select indepYear from country where code='"+codPais+"'group by 1");
+            System.out.print("Conexion estable");
+            while(rc.next())
+                {
+                ind=rc.getInt("indepYear");
+                }
+            
+           
+        }catch (SQLException e)
+        {
+             System.out.print("Conexion inestable");
+        }
+         return ind;
+     }
     
+     public int getExp(String codPais){
+         
+        this.conexion = new conection();
+        this.cn = this.conexion.getconection();
+        int exp = 0;
+        System.out.println("El código es "+codPais);
+        try{
+            this.st = this.cn.createStatement();
+            ResultSet rc= cn.createStatement().executeQuery("select lifeExpectancy from country where code='"+codPais+"'group by 1");
+            System.out.print("Conexion estable");
+            while(rc.next())
+                {
+                exp=rc.getInt("lifeExpectancy");
+                }
+            
+           
+        }catch (SQLException e)
+        {
+             System.out.print("Conexion inestable");
+        }
+         return exp;
+     }
+     
+     public String getPresi(String codPais){
+         
+        this.conexion = new conection();
+        this.cn = this.conexion.getconection();
+        String presi ="";
+        System.out.println("El código es "+codPais);
+        try{
+            this.st = this.cn.createStatement();
+            ResultSet rc= cn.createStatement().executeQuery("select headOfState from country where code='"+codPais+"'group by 1");
+            System.out.print("Conexion estable");
+            while(rc.next())
+                {
+                presi=rc.getString("headOfState");
+                }
+            
+           
+        }catch (SQLException e)
+        {
+             System.out.print("Conexion inestable");
+        }
+         return presi;
+     }
+     
+     public String getPIB(String codPais){
+         
+        this.conexion = new conection();
+        this.cn = this.conexion.getconection();
+        String pib ="";
+        System.out.println("El código es "+codPais);
+        try{
+            this.st = this.cn.createStatement();
+            ResultSet rc= cn.createStatement().executeQuery("select GNP from country where code='"+codPais+"'group by 1");
+            System.out.print("Conexion estable");
+            while(rc.next())
+                {
+                pib=rc.getString("GNP");
+                }
+            
+           
+        }catch (SQLException e)
+        {
+             System.out.print("Conexion inestable");
+        }
+         return pib;
+     }
+     
+     public String getPIB2(String codPais){
+         
+        this.conexion = new conection();
+        this.cn = this.conexion.getconection();
+        String pib ="";
+        System.out.println("El código es "+codPais);
+        try{
+            this.st = this.cn.createStatement();
+            ResultSet rc= cn.createStatement().executeQuery("select GNPOld from country where code='"+codPais+"'group by 1");
+            System.out.print("Conexion estable");
+            while(rc.next())
+                {
+                pib=rc.getString("GNPOld");
+                }
+            
+           
+        }catch (SQLException e)
+        {
+             System.out.print("Conexion inestable");
+        }
+         return pib;
+     }
+     
+     public String getSuperfi(String codPais){
+         
+        this.conexion = new conection();
+        this.cn = this.conexion.getconection();
+        String superfi ="";
+        System.out.println("El código es "+codPais);
+        try{
+            this.st = this.cn.createStatement();
+            ResultSet rc= cn.createStatement().executeQuery("select surfaceArea from country where code='"+codPais+"'group by 1");
+            System.out.print("Conexion estable");
+            while(rc.next())
+                {
+                superfi=rc.getString("surfaceArea");
+                }
+            
+           
+        }catch (SQLException e)
+        {
+             System.out.print("Conexion inestable");
+        }
+         return superfi;
+     }
+     
+     public String getCapi(String codPais){
+         
+        this.conexion = new conection();
+        this.cn = this.conexion.getconection();
+        String capi ="";
+        System.out.println("El código es "+codPais);
+        try{
+            this.st = this.cn.createStatement();
+            ResultSet rc= cn.createStatement().executeQuery("select capital from country where code='"+codPais+"'group by 1");
+            System.out.print("Conexion estable");
+            while(rc.next())
+                {
+                capi=rc.getString("capital");
+                }
+            
+           
+        }catch (SQLException e)
+        {
+             System.out.print("Conexion inestable");
+        }
+         return capi;
+     }
+     
+     
     
     
     
