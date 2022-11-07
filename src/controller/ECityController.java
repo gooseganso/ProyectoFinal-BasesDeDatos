@@ -20,6 +20,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import tablas.City;
 import tablas.Country;
 import Gestion.crudCity;
+import Gestion.showMessages;
 
 /**
  * FXML Controller class
@@ -46,6 +47,7 @@ public class ECityController implements Initializable {
     private JFXButton btnEliminar;
     
     private crudCity eliminar;
+    private showMessages showMessages;
 
     /**
      * Initializes the controller class.
@@ -54,6 +56,7 @@ public class ECityController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
        this.llenar= new GestionCity(); 
        this.eliminar= new crudCity();
+       this.showMessages = new showMessages();
        this.misCities=this.llenar.llenarTablaCity();
        this.modelaTabla();
    
@@ -84,9 +87,25 @@ public class ECityController implements Initializable {
     @FXML
     private void doEliminar(ActionEvent event) 
     {
-      City Ecity= this.tableCity.getSelectionModel().getSelectedItem();
+      String cod, mesg;
+      boolean confi;
+      mesg = "Quiere borrar el producto?...";
+      confi = this.showMessages.showMessages(mesg, 3);
+      try {
+        if(confi)
+        {
+            City Ecity= this.tableCity.getSelectionModel().getSelectedItem();
+            this.eliminar.eliminarCiudad(Ecity);
+            this.misCities.remove(this.tableCity.getSelectionModel().getSelectedItem());
+            this.tableCity.refresh();
+        }
+          }
+      catch (NumberFormatException nfe) 
+        {
+            mesg = "Falló la eliminación";
+            this.showMessages.showMessages(mesg, 1);
+        }
       
-      this.eliminar.eliminarCiudad(Ecity);
       
  
     }

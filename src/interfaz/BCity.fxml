@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,6 +22,36 @@
             <TableColumn fx:id="colPobla" prefWidth="267.0" text="Población" />
         </columns>
       </TableView>
-      <JFXButton fx:id="btn_Volver" layoutX="940.0" layoutY="599.0" onAction="#back" prefHeight="25.0" prefWidth="87.0" style="-fx-background-color: orange;" text="Volver" />
+      <SplitPane dividerPositions="0.5329067641681902" layoutX="-2.0" layoutY="323.0" prefHeight="324.0" prefWidth="1096.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="319.0" prefWidth="145.0" style="-fx-background-color: #3D4956;">
+               <children>
+                  <JFXRadioButton fx:id="radioAscen" layoutX="30.0" layoutY="74.0" onAction="#doFiltroAscen" text="Ascendente" />
+                  <JFXRadioButton fx:id="radioDescen" layoutX="30.0" layoutY="111.0" onAction="#doFiltroDescen" text="Descendente" />
+                  <Label layoutX="20.0" layoutY="29.0" text="Ordenar por: " textFill="WHITE" />
+                  <Spinner layoutX="135.0" layoutY="181.0" />
+                  <Label layoutX="20.0" layoutY="185.0" text="Límite de registros" textFill="WHITE" />
+                  <JFXComboBox layoutX="104.0" layoutY="25.0" prefHeight="25.0" prefWidth="124.0" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="319.0" prefWidth="708.0" style="-fx-background-color: #3D4956;">
+               <children>
+                  <Label layoutX="29.0" layoutY="23.0" text="Filtrar por:" textFill="WHITE" />
+                  <JFXCheckBox fx:id="checkPobla" layoutX="18.0" layoutY="55.0" onAction="#doFiltrarpobla" text="Población" />
+                  <JFXCheckBox fx:id="checkPais" layoutX="18.0" layoutY="108.0" onAction="#dofiltrarPais" text="País" />
+                  <JFXCheckBox fx:id="checkDistrict" layoutX="18.0" layoutY="165.0" onAction="#doFiltrarDistrict" text="Distrito" />
+                  <JFXRadioButton fx:id="menorigual" disable="true" layoutX="128.0" layoutY="52.0" text="&lt;=" />
+                  <JFXRadioButton fx:id="mayor" disable="true" layoutX="292.0" layoutY="53.0" text="&gt;" />
+                  <JFXRadioButton fx:id="igual" disable="true" layoutX="236.0" layoutY="52.0" text="=" />
+                  <JFXRadioButton fx:id="menor" disable="true" layoutX="186.0" layoutY="52.0" text="&lt;" />
+                  <JFXRadioButton fx:id="mayorigual" disable="true" layoutX="356.0" layoutY="53.0" text="&gt;=" />
+                  <JFXComboBox fx:id="comboPais" disable="true" layoutX="110.0" layoutY="105.0" prefHeight="25.0" prefWidth="124.0" />
+                  <JFXComboBox fx:id="comboDistrito" disable="true" layoutX="110.0" layoutY="162.0" prefHeight="25.0" prefWidth="124.0" />
+                  <JFXButton layoutX="409.0" layoutY="264.0" style="-fx-background-color: orange;" text="Buscar" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+      <JFXButton fx:id="btn_Volver" layoutX="974.0" layoutY="24.0" onAction="#back" prefHeight="25.0" prefWidth="87.0" style="-fx-background-color: orange;" text="Volver" />
    </children>
 </AnchorPane>
