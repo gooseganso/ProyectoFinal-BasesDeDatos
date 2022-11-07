@@ -190,6 +190,28 @@ public class GestionCity {
         }
          return capi;
      }
+     public String getCodCity(String codCity){
+         
+        this.conexion = new conection();
+        this.cn = this.conexion.getconection();
+        String capi ="";
+        System.out.println("El código es "+codCity);
+        try{
+            this.st = this.cn.createStatement();
+            ResultSet rc= cn.createStatement().executeQuery("select id from city where name='"+codCity+"'group by 1");
+            System.out.print("Conexion estable");
+            while(rc.next())
+                {
+                capi=rc.getString("id");
+                }
+            
+           
+        }catch (SQLException e)
+        {
+             System.out.print("Conexion inestable");
+        }
+         return capi;
+     }
      
     
     
