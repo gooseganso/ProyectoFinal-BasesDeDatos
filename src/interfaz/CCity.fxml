@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -15,5 +16,6 @@
       <TextField fx:id="tagNom" layoutX="228.0" layoutY="126.0" prefHeight="25.0" prefWidth="169.0" />
       <JFXComboBox fx:id="comboDistric" disable="true" layoutX="228.0" layoutY="264.0" prefHeight="25.0" prefWidth="169.0" />
       <TextField fx:id="tagPobla" layoutX="228.0" layoutY="336.0" prefHeight="25.0" prefWidth="169.0" />
+      <JFXButton fx:id="btnCrear" layoutX="577.0" layoutY="434.0" onAction="#doCrear" style="-fx-background-color: orange;" text="Crear" />
    </children>
 </AnchorPane>

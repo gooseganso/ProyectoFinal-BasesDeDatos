@@ -12,8 +12,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import Gestion.GestionCity;
+import com.jfoenix.controls.JFXButton;
 import java.util.ArrayList;
 import javafx.scene.control.TextField;
+import tablas.City;
+import Gestion.crudCity;
+import Gestion.showMessages;
 
 /**
  * FXML Controller class
@@ -31,10 +35,15 @@ public class CCityController implements Initializable {
     @FXML
     private JFXComboBox<String> comboDistric;
     private ArrayList<String> combosDistrito;
+    private City nCity;
     @FXML
     private TextField tagNom;
     @FXML
     private TextField tagPobla;
+    @FXML
+    private JFXButton btnCrear;
+    private crudCity crearC;
+    private showMessages showMessages;
 
     /**
      * Initializes the controller class.
@@ -46,6 +55,7 @@ public class CCityController implements Initializable {
        this.llenar= new GestionCountry();
        this.combosPais= this.codp.getCodigosPais();
        this.district= new GestionCity();
+       this.showMessages = new showMessages();
        this.llenarComboPais();
     }    
     
@@ -64,5 +74,36 @@ public class CCityController implements Initializable {
       this.comboDistric.setDisable(false);
       this.combosDistrito= this.district.codigoDistritos(codigoPS);
       this.comboDistric.getItems().addAll(combosDistrito);
+    }
+
+    @FXML
+    private void doCrear(ActionEvent event) 
+    {
+        String mesg,nom,codp,distri;
+        int popul;
+         try 
+        {
+         nom= this.tagNom.getText();
+         codp= this.comboPais.getSelectionModel().getSelectedItem();
+         distri= this.comboDistric.getSelectionModel().getSelectedItem();
+         popul= Integer.parseInt(this.tagPobla.getText());
+         this.crearC= new crudCity();
+        
+        System.out.println(nom);
+        System.out.println(codp);
+        System.out.println(distri);
+        System.out.println(popul);
+        
+        this.nCity= new City(0,nom,codp,distri,popul,"C");
+        
+        this.crearC.crearCity(nCity);
+        }
+        catch (NumberFormatException nfe) 
+         {
+
+            mesg = "Tipo de datos inccorrecto";
+            this.showMessages.showMessages(mesg, 1);
+
+          }
     }
   }
