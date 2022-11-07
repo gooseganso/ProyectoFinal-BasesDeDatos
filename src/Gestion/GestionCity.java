@@ -27,7 +27,7 @@ public class GestionCity {
     private Statement st;
     ObservableList<City> misCities = FXCollections.observableArrayList();
     private ArrayList<String> combosDistrito;
-    private ArrayList<String> combosCiudad;
+    ObservableList<City> combosCiudad=FXCollections.observableArrayList();
     private String query;
     private GestionCountry gestion;
     private ObservableList<Country> paises = FXCollections.observableArrayList();
@@ -84,20 +84,20 @@ public class GestionCity {
     }
     
     
-    public ArrayList<String> nomCiudades(String codigoPS)
+    public ObservableList<City> nomCiudades(String codigoPS)
     {
         this.conexion = new conection();
         this.cn = this.conexion.getconection();
-        this.combosCiudad= new ArrayList<String>();
+        this.combosCiudad= FXCollections.observableArrayList();
         System.out.println("El código es "+codigoPS);
         try{
             this.st = this.cn.createStatement();
-            ResultSet rc= cn.createStatement().executeQuery("select name from city where countrycode='"+codigoPS+"'group by name");
+            ResultSet rc= cn.createStatement().executeQuery("select * from city where countrycode='"+codigoPS+"'group by name");
             System.out.print("Conexion estable");
         
             while(rc.next())
                 {
-                this.combosCiudad.add(rc.getString("name"));   
+                 this.combosCiudad.add(new City(rc.getInt("ID"),rc.getString("Name"),rc.getString("CountryCode"),rc.getString("District"),rc.getInt("Population"),this.getPais(rc.getString(3))));   
                 }
             
            

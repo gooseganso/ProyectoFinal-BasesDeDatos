@@ -5,11 +5,13 @@
 package controller;
 
 import Gestion.GestionCity;
+import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -17,6 +19,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import tablas.City;
 import tablas.Country;
+import Gestion.crudCity;
 
 /**
  * FXML Controller class
@@ -39,6 +42,10 @@ public class ECityController implements Initializable {
     private TableColumn<City, ?> colPobla;
      private GestionCity llenar;
     ObservableList<City> misCities = FXCollections.observableArrayList();
+    @FXML
+    private JFXButton btnEliminar;
+    
+    private crudCity eliminar;
 
     /**
      * Initializes the controller class.
@@ -46,6 +53,7 @@ public class ECityController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        this.llenar= new GestionCity(); 
+       this.eliminar= new crudCity();
        this.misCities=this.llenar.llenarTablaCity();
        this.modelaTabla();
    
@@ -71,6 +79,16 @@ public class ECityController implements Initializable {
     private void llenarTablaCities() 
     {
       tableCity.setItems(misCities);
+    }
+
+    @FXML
+    private void doEliminar(ActionEvent event) 
+    {
+      City Ecity= this.tableCity.getSelectionModel().getSelectedItem();
+      
+      this.eliminar.eliminarCiudad(Ecity);
+      
+ 
     }
     
     

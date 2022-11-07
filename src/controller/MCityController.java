@@ -6,15 +6,21 @@ package controller;
 
 import Gestion.GestionCity;
 import Gestion.GestionCountry;
+import Gestion.crudCity;
+import Gestion.showMessages;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import tablas.City;
 
 /**
  * FXML Controller class
@@ -33,14 +39,20 @@ public class MCityController implements Initializable {
     private JFXComboBox<String> comboDistric;
     private ArrayList<String> combosDistrito;
     @FXML
-    private JFXComboBox<String> comboCity;
-    private ArrayList<String> combosCiudad;
+    private JFXComboBox<City> comboCity;
+    ObservableList<City> combosCiudad=FXCollections.observableArrayList();
     @FXML
     private TextField tagPobla;
     @FXML
     private JFXComboBox<String> comboCodPais;
     @FXML
     private TextField tagNom;
+    @FXML
+    private JFXButton btnModify;
+    private crudCity ModifyC;
+    private City mCity;
+    private showMessages showMessages;
+    
     
 
     /**
@@ -52,6 +64,7 @@ public class MCityController implements Initializable {
        this.llenar= new GestionCountry();
        this.combosPais= this.codp.getCodigosPais();
        this.district= new GestionCity();
+       this.showMessages = new showMessages();
        this.llenarComboPais();
     }    
     
@@ -63,7 +76,7 @@ public class MCityController implements Initializable {
 
     @FXML
     private void doActivarNomDep(ActionEvent event) {
-        String codigoCD=this.comboCity.getSelectionModel().getSelectedItem();
+        String codigoCD=this.comboCity.getSelectionModel().getSelectedItem().getName();
         String codigoPS=this.comboPais.getSelectionModel().getSelectedItem();
           
       this.comboDistric.getItems().clear();
@@ -95,16 +108,56 @@ public class MCityController implements Initializable {
     }
 
     @FXML
-    private void doActivarCity(ActionEvent event) {
+    private void doActivarCity(ActionEvent event) 
+    {
         String codigoPS=this.comboPais.getSelectionModel().getSelectedItem();
         
          this.comboCity.getItems().clear();
          this.comboCity.setDisable(false);
          this.combosCiudad= this.district.nomCiudades(codigoPS);
          this.comboCity.getItems().addAll(combosCiudad);
+         this.comboCity.setConverter(new CityConverter());
           
          
          
+    }
+
+    @FXML
+    private void doModify(ActionEvent event) 
+    {
+        String mesg,nom,codp,distri;
+        int popul,citySelect;
+         if(this.tagNom.getText().isEmpty() || this.comboCodPais.getSelectionModel().getSelectedItem()==null || this.comboDistric.getSelectionModel().getSelectedItem()==null || this.tagPobla.getText().isEmpty())
+        {
+          mesg = "Los campos deben estar llenos";
+          this.showMessages.showMessages(mesg, 1);
+        
+        }
+        else
+        {
+            try 
+            {
+            citySelect=this.comboCity.getSelectionModel().getSelectedItem().getID();
+            nom= this.tagNom.getText();
+            codp= this.comboCodPais.getSelectionModel().getSelectedItem();
+            distri= this.comboDistric.getSelectionModel().getSelectedItem();
+            popul= Integer.parseInt(this.tagPobla.getText());
+            this.ModifyC= new crudCity();
+        
+        
+            this.mCity= new City(0,nom,codp,distri,popul,"C");
+        
+            this.ModifyC.modifyCity(mCity,citySelect);
+            }
+            catch (NumberFormatException nfe) 
+                {
+
+                    mesg = "Tipo de datos inccorrecto";
+                    this.showMessages.showMessages(mesg, 1);
+
+                }
+        }
+        
     }
     
 }

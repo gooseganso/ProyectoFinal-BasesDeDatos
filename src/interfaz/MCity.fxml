@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -19,5 +20,6 @@
       <JFXComboBox fx:id="comboPais" layoutX="220.0" layoutY="67.0" onAction="#doActivarCity" prefHeight="25.0" prefWidth="231.0" />
       <Label layoutX="38.0" layoutY="69.0" prefHeight="22.0" prefWidth="95.0" text="Seleccione el país" />
       <Label layoutX="38.0" layoutY="110.0" prefHeight="22.0" prefWidth="169.0" text="Seleccione la ciudad a editar" />
+      <JFXButton fx:id="btnModify" layoutX="645.0" layoutY="441.0" onAction="#doModify" style="-fx-background-color: orange;" text="Modificar" />
    </children>
 </AnchorPane>

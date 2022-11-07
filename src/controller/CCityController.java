@@ -81,29 +81,36 @@ public class CCityController implements Initializable {
     {
         String mesg,nom,codp,distri;
         int popul;
-         try 
+        
+        if(this.tagNom.getText().isEmpty() || this.comboPais.getSelectionModel().getSelectedItem()==null || this.comboDistric.getSelectionModel().getSelectedItem()==null || this.tagPobla.getText().isEmpty())
         {
-         nom= this.tagNom.getText();
-         codp= this.comboPais.getSelectionModel().getSelectedItem();
-         distri= this.comboDistric.getSelectionModel().getSelectedItem();
-         popul= Integer.parseInt(this.tagPobla.getText());
-         this.crearC= new crudCity();
+          mesg = "Los campos deben estar llenos";
+          this.showMessages.showMessages(mesg, 1);
         
-        System.out.println(nom);
-        System.out.println(codp);
-        System.out.println(distri);
-        System.out.println(popul);
-        
-        this.nCity= new City(0,nom,codp,distri,popul,"C");
-        
-        this.crearC.crearCity(nCity);
         }
-        catch (NumberFormatException nfe) 
-         {
+        else
+        {
+            try 
+            {
+            nom= this.tagNom.getText();
+            codp= this.comboPais.getSelectionModel().getSelectedItem();
+            distri= this.comboDistric.getSelectionModel().getSelectedItem();
+            popul= Integer.parseInt(this.tagPobla.getText());
+            this.crearC= new crudCity();
+        
+        
+            this.nCity= new City(0,nom,codp,distri,popul,"C");
+        
+            this.crearC.crearCity(nCity);
+            }
+            catch (NumberFormatException nfe) 
+                {
 
-            mesg = "Tipo de datos inccorrecto";
-            this.showMessages.showMessages(mesg, 1);
+                    mesg = "Tipo de datos inccorrecto";
+                    this.showMessages.showMessages(mesg, 1);
 
-          }
+                }
+        }
+        
     }
   }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,5 +16,6 @@
             <TableColumn fx:id="colPobla" prefWidth="235.0" text="Population" />
         </columns>
       </TableView>
+      <JFXButton fx:id="btnEliminar" layoutX="364.0" layoutY="447.0" onAction="#doEliminar" style="-fx-background-color: orange;" text="Eliminar" />
    </children>
 </AnchorPane>
