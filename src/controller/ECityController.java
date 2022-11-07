@@ -89,12 +89,13 @@ public class ECityController implements Initializable {
     {
       String cod, mesg;
       boolean confi;
-      mesg = "Quiere borrar el producto?...";
+      City Ecity= this.tableCity.getSelectionModel().getSelectedItem();
+      mesg = "Quiere borrar esta ciudad?   " + Ecity.getName() ;
       confi = this.showMessages.showMessages(mesg, 3);
       try {
         if(confi)
         {
-            City Ecity= this.tableCity.getSelectionModel().getSelectedItem();
+            Ecity= this.tableCity.getSelectionModel().getSelectedItem();
             this.eliminar.eliminarCiudad(Ecity);
             this.misCities.remove(this.tableCity.getSelectionModel().getSelectedItem());
             this.tableCity.refresh();

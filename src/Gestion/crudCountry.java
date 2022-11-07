@@ -59,6 +59,67 @@ public class crudCountry {
         
      
     }
+    
+    
+    
+    public void eliminarPais(Country Ecountry) 
+    {
+       this.showMessages = new showMessages();
+        this.conexion = new conection();
+        this.cn = this.conexion.getconection();
+        String mesg;
+        try
+        {
+         PreparedStatement rc= cn.prepareStatement("delete from country where code='"+Ecountry.getCode()+"'");
+         System.out.println("Eliminación exitosa");
+         
+         rc.executeUpdate();
+         rc.close();
+         mesg = "País eliminado correctamente";
+         this.showMessages.showMessages(mesg, 2);
+         
+        }
+        catch(Exception e)
+           {
+                      mesg = "País no se pudo eliminar";
+                      this.showMessages.showMessages(mesg, 1);
+           }
+        
+    }
+    
+    public void modifyCountry (Country mCountry,String aCountry)
+    {
+        this.showMessages = new showMessages();
+        this.conexion = new conection();
+        this.cn = this.conexion.getconection();
+        String mesg;
+        try
+        {
+         PreparedStatement rc= cn.prepareStatement("update country set name='"+mCountry.getName()+"',continent='"+mCountry.getContinent()
+                 +"',region='"+mCountry.getRegion()+"',surfaceArea='"+mCountry.getSurfaceArea()+"',IndepYear='"+mCountry.getIndepYear()
+                 +"' ,population='"+mCountry.getPopulation()+"' ,lifeExpectancy='"+mCountry.getLifeExpectancy()
+                 +"' ,GNP='"+mCountry.getGNP()+"' ,GNPOld='"+mCountry.getGNPOld()
+                 +"' ,localName='"+mCountry.getLocalName()+"' ,governmentForm='"+mCountry.getGovernmentForm()
+                 +"' ,headOfState='"+mCountry.getHeadOfState()+"' ,capital='"+mCountry.getCapital()+"'  where Code='"+aCountry+"'");
+         System.out.println("Insercción exitosa");
+         
+         rc.executeUpdate();
+         rc.close();
+         mesg = "País modificado correctamente";
+         this.showMessages.showMessages(mesg, 2);
+         
+        }
+        catch(Exception e)
+           {
+                     mesg = "País no se pudo modificar";
+                    this.showMessages.showMessages(mesg, 1);
+           }
+        
+     
+    }
+    
+    
+    
     public ArrayList<String> comboGobierno(){
         this.conexion = new conection();
         this.cn = this.conexion.getconection();
@@ -78,5 +139,28 @@ public class crudCountry {
             
         }
         return this.combos;
+    }
+    
+    public String getGov(String codPS){
+        String gov ="";
+        this.conexion = new conection();
+        this.cn = this.conexion.getconection();
+        this.query="";
+        this.query="select GovernmentForm from country where code = '"+ codPS +"'group by 1";
+             
+        try{
+            this.st = this.cn.createStatement();
+            this.rs= this.st.executeQuery(this.query);
+            
+            while(rs.next()){
+              gov=(rs.getString("GovernmentForm"));  
+            }
+            
+        }catch (SQLException e){
+            
+        }
+        return gov;
+        
+        
     }
 }

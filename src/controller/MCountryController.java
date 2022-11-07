@@ -6,13 +6,19 @@ package controller;
 
 import Gestion.GestionCity;
 import Gestion.GestionCountry;
+import Gestion.crudCountry;
+import Gestion.showMessages;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXSlider;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.Vector;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,6 +26,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
+import tablas.City;
 import tablas.Country;
 
 /**
@@ -34,7 +41,7 @@ public class MCountryController implements Initializable {
     private ArrayList<String> combosPais;
     private GestionCountry country;
     private GestionCity city;
-   private ArrayList<String> combosCiudad;
+    private ArrayList<String> combosCiudad;
     @FXML
     private TextField tagNom;
     @FXML
@@ -59,12 +66,26 @@ public class MCountryController implements Initializable {
     private TextField tagPIB;
     @FXML
     private TextField tagPIB2;
-    @FXML
     private TextField tagCapi;
     @FXML
     private TextField tagSuperfi;
     @FXML
     private Label tagInd;
+    @FXML
+    private JFXButton btnModify;
+    @FXML
+    private JFXComboBox<String> comboGob;
+    private crudCountry EliC;
+    private showMessages showMessages;
+    private Country mCountry;
+    private ObservableList<City> combosCiudad2=FXCollections.observableArrayList();
+    Country nCountry;
+    @FXML
+    private JFXComboBox<String> comboCity;
+    private GestionCity district;
+    private GestionCountry pais;
+    
+     
 
     /**
      * Initializes the controller class.
@@ -75,6 +96,8 @@ public class MCountryController implements Initializable {
         this.country = new GestionCountry();
         this.combosPais = this.country.getCodigosPais();
         this.llenarComboPaises();
+        this.showMessages = new showMessages();
+        this.district= new GestionCity();
         
         
       SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 150);
@@ -176,12 +199,10 @@ public class MCountryController implements Initializable {
         String codigoPS =this.comboCountry.getSelectionModel().getSelectedItem();
         
         this.tagCod1.clear();
-        this.tagCod1.setDisable(false);
         this.tagCod1.clear();
         this.tagCod1.setText(codigoPS);
         
         this.tagCod2.clear();
-        this.tagCod2.setDisable(false);
         this.tagCod2.clear();
         this.tagCod2.setText(this.country.getCode2(codigoPS));
         
@@ -241,12 +262,29 @@ public class MCountryController implements Initializable {
         this.tagSuperfi.setDisable(false);
         this.tagSuperfi.clear();
         this.tagSuperfi.setText(this.country.getSuperfi(codigoPS));
+      
         
-        this.tagCapi.clear();
-        String codCapi = this.country.getCapi(codigoPS);
-        this.tagCapi.setDisable(false);
-        this.tagCapi.clear();
-        this.tagCapi.setText(this.city.getCapi(codCapi));
+        this.comboGob.getItems().clear();
+        this.comboGob.setDisable(false);
+        this.comboGob.getItems().clear();
+        ArrayList<String> comboGobiernos;
+        this.EliC= new crudCountry();
+        comboGobiernos = this.EliC.comboGobierno();
+        for(int i=0; i<comboGobiernos.size(); i++){
+        this.comboGob.getItems().add(comboGobiernos.get(i));}
+        this.comboGob.getSelectionModel().select(this.EliC.getGov(codigoPS));
+        
+        this.comboCity.getItems().clear();
+         this.comboCity.setDisable(false);
+         this.combosCiudad2= this.district.llenarTablaCity();
+         Vector nomCiudad = new Vector<String>(); 
+         
+         for(City ciudad : this.combosCiudad2){
+             String nom= ciudad.getName();
+             nomCiudad.add(nom);
+         }
+         this.comboCity.getItems().addAll(nomCiudad);
+        
         
         
         
@@ -260,5 +298,63 @@ public class MCountryController implements Initializable {
     private void llenarComboPaises() {
         this.comboCountry.getItems().addAll(combosPais);   
     }
+
+    @FXML
+    private void doModify(ActionEvent event) {
+        String mesg,nomP,codp1,codp2,region,continente,nomLoc,presi,capi, gob;
+        int indepYear, pobla;
+        float exp, PIB, PIB2,superfi;
+        
+        if(this.tagNom.getText().isEmpty() || this.tagCod1.getText().isEmpty() || this.tagCod2.getText().isEmpty() ||
+                this.comboContinente.getSelectionModel().getSelectedItem()==null || this.comboRegion.getSelectionModel().getSelectedItem()==null
+                || this.tagPobla.getText().isEmpty() || this.tagPobla.getText().isBlank() || this.tagPIB.getText().isEmpty()
+                || this.tagPIB2.getText().isEmpty() || this.tagLocNom.getText().isEmpty() || this.tagSuperfi.getText().isEmpty() ||
+                this.tagPresi.getText().isEmpty() || this.comboCity.getSelectionModel().getSelectedItem()==null || this.comboGob.getSelectionModel().getSelectedItem()==null){
+            
+            mesg = "Los campos deben estar llenos";
+            this.showMessages.showMessages(mesg, 1);
+            
+        } else {  
+            if(this.tagCod1.getText().length() > 3 || this.tagCod2.getText().length() > 2 ){
+            mesg = "Un codigo o los 2 tienen un largo mayor al permitido";
+            this.showMessages.showMessages(mesg, 1); 
+            } else {
+                try{
+                    nomP = this.tagNom.getText();
+                    codp1 = this.tagCod1.getText();
+                    codp2 = this.tagCod2.getText();
+                    region = this.comboRegion.getSelectionModel().getSelectedItem();
+                    continente = this.comboContinente.getSelectionModel().getSelectedItem();
+                    pobla = Integer.parseInt(this.tagPobla.getText());
+                    indepYear = (int) this.sliderInd.getValue();
+                    exp = this.spinnerExp.getValue();
+                    PIB = Float.parseFloat(this.tagPIB.getText());
+                    PIB2 = Float.parseFloat(this.tagPIB2.getText());
+                    nomLoc = this.tagLocNom.getText();
+                    capi = this.comboCity.getSelectionModel().getSelectedItem();
+                    presi = this.tagPresi.getText();
+                    superfi = Float.parseFloat(this.tagSuperfi.getText());
+                    gob = this.comboGob.getSelectionModel().getSelectedItem();
+                    this.EliC= new crudCountry();
+                    this.pais = new GestionCountry();
+                    
+                    
+                    
+                    this.mCountry =new Country(codp1,nomP,continente,region,superfi,indepYear,pobla,exp,PIB,PIB2,nomLoc,gob,presi,this.district.getCodCity(capi),codp2,"a");
+                    
+                    this.EliC.modifyCountry(mCountry,codp1);
+                    
+                    
+                }catch (NumberFormatException nfe) 
+                {
+
+                    mesg = "Tipo de datos inccorrecto";
+                    this.showMessages.showMessages(mesg, 1);
+
+                }
+            }
+        
+    }
     
+}
 }

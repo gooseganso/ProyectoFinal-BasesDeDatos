@@ -5,11 +5,15 @@
 package controller;
 
 import Gestion.GestionCountry;
+import Gestion.crudCountry;
+import Gestion.showMessages;
+import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -50,6 +54,10 @@ public class ECountryController implements Initializable {
     private TableColumn<Country, ?> Capital;
     private GestionCountry llenar;
     ObservableList<Country> misCountry = FXCollections.observableArrayList();
+    @FXML
+    private JFXButton btnEliminar;
+    private crudCountry eliminar;
+    private showMessages showMessages;
  
 
     /**
@@ -59,6 +67,8 @@ public class ECountryController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
        this.llenar= new GestionCountry();
         this.misCountry = this.llenar.llenarTablaPaises();
+        this.eliminar= new crudCountry();
+        this.showMessages = new showMessages();
         this.modelaTabla();
     }    
     public void constructorNuevo(ArrayList<Country> caso) 
@@ -90,6 +100,30 @@ public class ECountryController implements Initializable {
 
     private void llenarTablaPaises() {
       tableCountry.setItems(misCountry);
+    }
+
+    @FXML
+    private void doEliminar(ActionEvent event) {
+      String cod, mesg;
+      boolean confi;
+      Country Ecountry= this.tableCountry.getSelectionModel().getSelectedItem();
+      mesg = "Quiere borrar este país?   " + Ecountry.getName() ;
+      confi = this.showMessages.showMessages(mesg, 3);
+      try {
+        if(confi)
+        {
+            Ecountry= this.tableCountry.getSelectionModel().getSelectedItem();
+            this.eliminar.eliminarPais(Ecountry);
+            this.misCountry.remove(this.tableCountry.getSelectionModel().getSelectedItem());
+            this.tableCountry.refresh();
+        }
+          }
+      catch (NumberFormatException nfe) 
+        {
+            mesg = "Falló la eliminación";
+            this.showMessages.showMessages(mesg, 1);
+        }
+        
     }
     
 }
