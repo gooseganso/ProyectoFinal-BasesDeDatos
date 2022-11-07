@@ -22,12 +22,15 @@ import javafx.scene.layout.AnchorPane;
 import tablas.City;
 import tablas.Country;
 import Gestion.GestionCity;
+import Gestion.GestionCountry;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXRadioButton;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import Gestion.crudCity;
+import Gestion.showMessages;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -75,9 +78,9 @@ public class BCityController implements Initializable {
     @FXML
     private JFXRadioButton mayorigual;
     @FXML
-    private JFXComboBox<?> comboPais;
+    private JFXComboBox<String> comboPais;
     @FXML
-    private JFXComboBox<?> comboDistrito;
+    private JFXComboBox<String> comboDistrito;
     @FXML
     private JFXComboBox<String> comboFiltro;
     @FXML
@@ -86,6 +89,14 @@ public class BCityController implements Initializable {
     private JFXButton btnFiltro;
     
     private crudCity filtrar;
+    private GestionCountry codp;
+    private ArrayList<String> combosPais;
+    private String comparador;
+    private ArrayList<String> combosDistrito;
+    private GestionCity district;
+    private showMessages showMessages;
+    @FXML
+    private TextField population;
 
     /**
      * Initializes the controller class.
@@ -93,21 +104,29 @@ public class BCityController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-       this.llenar= new GestionCity(); 
+       this.llenar= new GestionCity();
+       this.comparador="";
        this.misCities=this.llenar.llenarTablaCity();
+       this.codp= new GestionCountry();
+       this.combosPais= this.codp.getCodigosPais();
        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10000);
        this.spinnerLimit.setValueFactory(valueFactory);
        valueFactory.setValue(1);
        this.comboFiltro();
        this.modelaTabla();
+       this.showMessages = new showMessages();
     }
     public void constructorNuevo(ArrayList<Country> caso) 
     {
         this.tableCity.getItems().clear();
+        
         this.modelaTabla();
 
     }
-
+    private void llenarComboPais()
+    {
+     this.comboPais.getItems().addAll(this.combosPais);
+    }
     @FXML
     private void back(ActionEvent event)  throws IOException {
         
@@ -156,7 +175,9 @@ public class BCityController implements Initializable {
 
     @FXML
     private void doFiltrarpobla(ActionEvent event) 
-    {
+    { 
+        this.population.setEditable(true);
+         this.population.setDisable(false);
         this.mayor.setSelected(false);
         this.mayorigual.setSelected(false);
         this.igual.setSelected(false);
@@ -178,6 +199,7 @@ public class BCityController implements Initializable {
           this.menorigual.setDisable(true);
           this.menor.setDisable(true);
           this.igual.setDisable(true);
+          this.population.setDisable(true);
         }
         
     }
@@ -185,12 +207,31 @@ public class BCityController implements Initializable {
     @FXML
     private void dofiltrarPais(ActionEvent event) 
     {
-        this.comboPais.setDisable(false);
+        if(this.checkPais.isSelected())
+        {
+         this.comboPais.setDisable(false);
+         this.llenarComboPais();
+         this.checkDistrict.setDisable(false);
+        }
+        else
+        {
+          this.comboPais.setDisable(true);
+        }
+        
     }
 
     @FXML
     private void doFiltrarDistrict(ActionEvent event) 
     {
+        if(this.checkDistrict.isSelected())
+        {
+          this.comboDistrito.setDisable(false);
+        }
+        else
+        {
+         this.comboDistrito.setDisable(true);
+        }
+        
     }
 
     @FXML
@@ -200,6 +241,7 @@ public class BCityController implements Initializable {
         this.igual.setSelected(false);
         this.mayor.setSelected(false);
         this.mayorigual.setSelected(false);
+        
     }
 
     @FXML
@@ -209,6 +251,7 @@ public class BCityController implements Initializable {
         this.igual.setSelected(false);
         this.menorigual.setSelected(false);
         this.mayorigual.setSelected(false);
+        
     }
 
     @FXML
@@ -218,6 +261,7 @@ public class BCityController implements Initializable {
         this.menorigual.setSelected(false);
         this.mayor.setSelected(false);
         this.mayorigual.setSelected(false);
+       
     }
 
     @FXML
@@ -227,6 +271,7 @@ public class BCityController implements Initializable {
         this.igual.setSelected(false);
         this.mayor.setSelected(false);
         this.mayorigual.setSelected(false);
+        
     }
 
     @FXML
@@ -236,18 +281,50 @@ public class BCityController implements Initializable {
         this.igual.setSelected(false);
         this.mayor.setSelected(false);
         this.menorigual.setSelected(false);
+        
     }
-
+    private String doComparador()
+    {
+      if(this.menorigual.isSelected())
+      {
+        this.comparador="<=";
+      }
+      else if(this.menor.isSelected())
+      {
+       this.comparador="<";
+      }
+      else if(this.igual.isSelected())
+      {
+        this.comparador="=";
+      }
+      else if(this.mayor.isSelected())
+      {
+       this.comparador=">";
+      }
+      else if(this.mayorigual.isSelected())
+      {
+       this.comparador=">=";
+      }
+      
+      return this.comparador;
+      
+    }
     @FXML
     private void doFiltrar(ActionEvent event) 
     {
-        this.filtrar= new crudCity();
-        String filtro,order="",filtroSend="" ;
-        int limit;
+      this.filtrar= new crudCity();
+      String filtro,order=" ",filtroSend="",filtroPopul="",filtroPais="",filtroDistric="",pais=this.comboPais.getSelectionModel().getSelectedItem(),filtrototal="",comparar,distrito=this.comboDistrito.getSelectionModel().getSelectedItem(),mesg ;
+      int limit,population;
+      boolean restrict=false,validador=true;
+      
+      try
+      {
         
+        comparar=this.doComparador();
         filtro=this.comboFiltro.getSelectionModel().getSelectedItem();
-        limit=this.spinnerLimit.getValue();
-        if(this.radioAscen.isSelected())
+        
+        limit=this.spinnerLimit.getValue(); 
+         if(this.radioAscen.isSelected())
         {
           order="asc";
         }
@@ -257,23 +334,113 @@ public class BCityController implements Initializable {
           {
               order="desc";
           }
+          else
+          {
+            order=" ";
+          }
               
         }
-        switch (filtro) 
+        if(null==filtro)
         {
-            case "ID" -> filtroSend="ID";
-            case "Nombre" -> filtroSend="name";
-            case "País" -> filtroSend="countrycode";
-            case "Distrito" -> filtroSend="district";
-            case "Población" -> filtroSend="population";
+            filtroSend="";
+        }
+        else
+        {
+          if(this.radioAscen.isSelected()||this.radioDescen.isSelected())
+          {
+            switch (filtro) 
+           {
+            case "ID" -> filtroSend="order by ID";
+            case "Nombre" -> filtroSend="order by name";
+            case "País" -> filtroSend="order by countrycode";
+            case "Distrito" -> filtroSend="order by district";
+            case "Población" -> filtroSend="order by population";
             default -> {
             } 
+         
+           }
+          }
+          else
+          {
+            validador=false;
+          }
+          
+        }
+        if(this.checkPais.isSelected()|| this.checkPobla.isSelected()|| this.checkDistrict.isSelected())
+        {
+            restrict=true;
+            if(this.checkPais.isSelected())
+                {
+                filtroPais="where countrycode='"+pais+"' ";
+                }
+
+            if(this.checkPobla.isSelected())
+                {
+                 population=Integer.parseInt(this.population.getText()); 
+                 if(this.mayor.isSelected()||this.mayorigual.isSelected()||this.menor.isSelected()||this.menorigual.isSelected()||this.igual.isSelected())
+                    {
+                 if(this.checkPais.isSelected())
+                        {
+                    filtroPopul=" and population "+comparar+population+" ";
+                        }
+                 else
+                        {
+                    filtroPopul=" where population "+comparar+population+" ";
+                        }
+                    }
+                 else
+                        {
+                    validador=false;
+                        } 
+                }
+
+            if(this.checkDistrict.isSelected())
+                {
+                    filtroDistric=" and district='"+distrito+"'";
+                }
+                    filtrototal=filtroPais+filtroPopul+filtroDistric;
         }
         
-        this.misCities= this.filtrar.ordenarCity(filtroSend, order, limit);
-        this.llenarTablaCities();
-        this.tableCity.refresh();
+        if(validador)
+        {
+            this.misCities= this.filtrar.ordenarCity(restrict,filtroSend, order, limit,filtrototal);
         
+            if(this.misCities.isEmpty())
+             {
+                mesg = "No hay ninguna ciudad con estas especificaiones";
+                this.showMessages.showMessages(mesg, 2);
+             }
+            else
+             {
+              this.llenarTablaCities();
+              this.tableCity.refresh();
+             }  
+           
+        }
+        else
+        {
+            mesg = "Debe seleccionar todos los parámetros requeridos";
+            this.showMessages.showMessages(mesg, 1);
+        }
+        
+      }catch (NumberFormatException nfe) 
+                    {
+
+                        mesg = "Tipo de datos inccorrecto";
+                        this.showMessages.showMessages(mesg, 1);
+
+                    }
+          
+    }
+
+    @FXML
+    private void doFiltrarDistri(ActionEvent event) 
+    {
+        String codigoPS= this.comboPais.getSelectionModel().getSelectedItem();
+                
+        this.district= new GestionCity();
+        this.combosDistrito= this.district.codigoDistritos(codigoPS);
+        this.comboDistrito.getItems().addAll(this.combosDistrito);
     }
     
 }

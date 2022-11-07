@@ -9,6 +9,7 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="645.0" prefWidth="1096.0" style="-fx-background-color: #3D4956;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BCityController">
@@ -38,16 +39,17 @@
                <children>
                   <Label layoutX="29.0" layoutY="23.0" text="Filtrar por:" textFill="WHITE" />
                   <JFXCheckBox fx:id="checkPobla" layoutX="18.0" layoutY="55.0" onAction="#doFiltrarpobla" text="Población" />
-                  <JFXCheckBox fx:id="checkPais" layoutX="18.0" layoutY="108.0" onAction="#dofiltrarPais" text="País" />
-                  <JFXCheckBox fx:id="checkDistrict" layoutX="18.0" layoutY="165.0" onAction="#doFiltrarDistrict" text="Distrito" />
+                  <JFXCheckBox fx:id="checkPais" layoutX="18.0" layoutY="152.0" onAction="#dofiltrarPais" text="País" />
+                  <JFXCheckBox fx:id="checkDistrict" disable="true" layoutX="18.0" layoutY="195.0" onAction="#doFiltrarDistrict" text="Distrito" />
                   <JFXRadioButton fx:id="menorigual" disable="true" layoutX="128.0" layoutY="52.0" onAction="#doMenorigual" text="&lt;=" />
                   <JFXRadioButton fx:id="mayor" disable="true" layoutX="292.0" layoutY="53.0" onAction="#doMayor" text="&gt;" />
                   <JFXRadioButton fx:id="igual" disable="true" layoutX="236.0" layoutY="52.0" onAction="#doIgual" text="=" />
                   <JFXRadioButton fx:id="menor" disable="true" layoutX="186.0" layoutY="52.0" onAction="#doMenor" text="&lt;" />
                   <JFXRadioButton fx:id="mayorigual" disable="true" layoutX="356.0" layoutY="53.0" onAction="#doMayorIgual" text="&gt;=" />
-                  <JFXComboBox fx:id="comboPais" disable="true" layoutX="110.0" layoutY="105.0" prefHeight="25.0" prefWidth="124.0" />
-                  <JFXComboBox fx:id="comboDistrito" disable="true" layoutX="110.0" layoutY="162.0" prefHeight="25.0" prefWidth="124.0" />
+                  <JFXComboBox fx:id="comboPais" disable="true" layoutX="110.0" layoutY="149.0" onAction="#doFiltrarDistri" prefHeight="25.0" prefWidth="124.0" />
+                  <JFXComboBox fx:id="comboDistrito" disable="true" layoutX="110.0" layoutY="192.0" prefHeight="25.0" prefWidth="124.0" />
                   <JFXButton fx:id="btnFiltro" layoutX="409.0" layoutY="264.0" onAction="#doFiltrar" style="-fx-background-color: orange;" text="Buscar" />
+                  <TextField fx:id="population" editable="false" layoutX="172.0" layoutY="88.0" />
                </children>
             </AnchorPane>
         </items>

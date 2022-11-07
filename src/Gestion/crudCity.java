@@ -99,18 +99,20 @@ public class crudCity
      
     }
     
-    public ObservableList<City> ordenarCity(String filtro,String order,int limit)
+    public ObservableList<City> ordenarCity(boolean restrict,String filtro,String order,int limit,String filtroTotal)
     {
       this.conexion = new conection();
         this.cn = this.conexion.getconection();
         this.misCitiesOrder = FXCollections.observableArrayList();
         this.gestion = new GestionCountry();
         this.paises = this.gestion.misCountry;
-        
-      try
+     
+      if(restrict)
+      {
+        try
         {
          
-         ResultSet rc= cn.createStatement().executeQuery("Select * from city order by "+filtro+" "+order+" limit "+limit+" ");
+         ResultSet rc= cn.createStatement().executeQuery("Select * from city "+filtroTotal+" "+filtro+" "+order+" limit "+limit+" ");
         
          while (rc.next())
          {
@@ -121,6 +123,25 @@ public class crudCity
                      {
                       System.err.println("Error: " +e);
                      }
+      }
+      else
+      {
+        try
+        {
+         
+         ResultSet rc= cn.createStatement().executeQuery("Select * from city "+filtro+" "+order+" limit "+limit+" ");
+        
+         while (rc.next())
+         {
+          misCitiesOrder.add(new City(rc.getInt("ID"),rc.getString("Name"),rc.getString("CountryCode"),rc.getString("District"),rc.getInt("Population"),this.getPais(rc.getString(3))));
+         }
+        }
+        catch(Exception e)
+                     {
+                      System.err.println("Error: " +e);
+                     }
+      }
+      
       return this.misCitiesOrder;
     
     
@@ -137,6 +158,5 @@ public class crudCity
     }
     
     
-    
-    
+   
 }
