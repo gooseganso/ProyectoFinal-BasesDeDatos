@@ -73,7 +73,12 @@ public class CCityController implements Initializable {
       this.comboDistric.getItems().clear();
       this.comboDistric.setDisable(false);
       this.combosDistrito= this.district.codigoDistritos(codigoPS);
-      this.comboDistric.getItems().addAll(combosDistrito);
+      if(this.combosDistrito.isEmpty()){
+          this.comboDistric.getItems().add("-");
+      
+      }
+      
+      else{this.comboDistric.getItems().addAll(combosDistrito);}
     }
 
     @FXML
