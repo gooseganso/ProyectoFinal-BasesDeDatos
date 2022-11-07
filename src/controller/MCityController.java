@@ -135,27 +135,37 @@ public class MCityController implements Initializable {
         }
         else
         {
-            try 
+             if(this.tagNom.getText().length()>35)
             {
-            citySelect=this.comboCity.getSelectionModel().getSelectedItem().getID();
-            nom= this.tagNom.getText();
-            codp= this.comboCodPais.getSelectionModel().getSelectedItem();
-            distri= this.comboDistric.getSelectionModel().getSelectedItem();
-            popul= Integer.parseInt(this.tagPobla.getText());
-            this.ModifyC= new crudCity();
-        
-        
-            this.mCity= new City(0,nom,codp,distri,popul,"C");
-        
-            this.ModifyC.modifyCity(mCity,citySelect);
+               mesg = "El nombre excede el número de carácteres permitidos";
+               this.showMessages.showMessages(mesg, 1);
+            
             }
-            catch (NumberFormatException nfe) 
-                {
+             else
+             { 
+                 try 
+                    {
+                        citySelect=this.comboCity.getSelectionModel().getSelectedItem().getID();
+                        nom= this.tagNom.getText();
+                        codp= this.comboCodPais.getSelectionModel().getSelectedItem();
+                        distri= this.comboDistric.getSelectionModel().getSelectedItem();
+                        popul= Integer.parseInt(this.tagPobla.getText());
+                        this.ModifyC= new crudCity();
+        
+        
+                        this.mCity= new City(0,nom,codp,distri,popul,"C");
+        
+                        this.ModifyC.modifyCity(mCity,citySelect);
+                    }
+                  catch (NumberFormatException nfe) 
+                    {
 
-                    mesg = "Tipo de datos inccorrecto";
-                    this.showMessages.showMessages(mesg, 1);
+                        mesg = "Tipo de datos inccorrecto";
+                        this.showMessages.showMessages(mesg, 1);
 
-                }
+                    }
+             }
+            
         }
         
     }

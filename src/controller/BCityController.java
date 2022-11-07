@@ -25,6 +25,9 @@ import Gestion.GestionCity;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXRadioButton;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
+import Gestion.crudCity;
 
 /**
  * FXML Controller class
@@ -75,6 +78,14 @@ public class BCityController implements Initializable {
     private JFXComboBox<?> comboPais;
     @FXML
     private JFXComboBox<?> comboDistrito;
+    @FXML
+    private JFXComboBox<String> comboFiltro;
+    @FXML
+    private Spinner<Integer> spinnerLimit;
+    @FXML
+    private JFXButton btnFiltro;
+    
+    private crudCity filtrar;
 
     /**
      * Initializes the controller class.
@@ -84,6 +95,10 @@ public class BCityController implements Initializable {
         
        this.llenar= new GestionCity(); 
        this.misCities=this.llenar.llenarTablaCity();
+       SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10000);
+       this.spinnerLimit.setValueFactory(valueFactory);
+       valueFactory.setValue(1);
+       this.comboFiltro();
        this.modelaTabla();
     }
     public void constructorNuevo(ArrayList<Country> caso) 
@@ -111,6 +126,15 @@ public class BCityController implements Initializable {
        this.colPobla.setCellValueFactory(new PropertyValueFactory("population"));
         
         
+    }
+    
+    private void comboFiltro()
+    {
+      this.comboFiltro.getItems().add("ID");
+      this.comboFiltro.getItems().add("Nombre");
+      this.comboFiltro.getItems().add("País");
+      this.comboFiltro.getItems().add("Distrito");
+      this.comboFiltro.getItems().add("Población");
     }
 
     private void llenarTablaCities() 
@@ -167,6 +191,89 @@ public class BCityController implements Initializable {
     @FXML
     private void doFiltrarDistrict(ActionEvent event) 
     {
+    }
+
+    @FXML
+    private void doMenorigual(ActionEvent event) 
+    {
+        this.menor.setSelected(false);
+        this.igual.setSelected(false);
+        this.mayor.setSelected(false);
+        this.mayorigual.setSelected(false);
+    }
+
+    @FXML
+    private void doMayor(ActionEvent event) 
+    {
+        this.menor.setSelected(false);
+        this.igual.setSelected(false);
+        this.menorigual.setSelected(false);
+        this.mayorigual.setSelected(false);
+    }
+
+    @FXML
+    private void doIgual(ActionEvent event) 
+    {
+        this.menor.setSelected(false);
+        this.menorigual.setSelected(false);
+        this.mayor.setSelected(false);
+        this.mayorigual.setSelected(false);
+    }
+
+    @FXML
+    private void doMenor(ActionEvent event) 
+    {
+        this.menorigual.setSelected(false);
+        this.igual.setSelected(false);
+        this.mayor.setSelected(false);
+        this.mayorigual.setSelected(false);
+    }
+
+    @FXML
+    private void doMayorIgual(ActionEvent event) 
+    {
+        this.menor.setSelected(false);
+        this.igual.setSelected(false);
+        this.mayor.setSelected(false);
+        this.menorigual.setSelected(false);
+    }
+
+    @FXML
+    private void doFiltrar(ActionEvent event) 
+    {
+        this.filtrar= new crudCity();
+        String filtro,order="",filtroSend="" ;
+        int limit;
+        
+        filtro=this.comboFiltro.getSelectionModel().getSelectedItem();
+        limit=this.spinnerLimit.getValue();
+        if(this.radioAscen.isSelected())
+        {
+          order="asc";
+        }
+        else
+        {
+          if(this.radioDescen.isSelected())
+          {
+              order="desc";
+          }
+              
+        }
+        switch (filtro) 
+        {
+            case "ID" -> filtroSend="ID";
+            case "Nombre" -> filtroSend="name";
+            case "País" -> filtroSend="countrycode";
+            case "Distrito" -> filtroSend="district";
+            case "Población" -> filtroSend="population";
+            default -> {
+            } 
+        }
+        
+        this.misCities= this.filtrar.ordenarCity(filtroSend, order, limit);
+        this.llenarTablaCities();
+        this.tableCity.refresh();
+        
     }
     
 }

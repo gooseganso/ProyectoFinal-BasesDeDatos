@@ -9,6 +9,9 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import tablas.City;
 import java.sql.PreparedStatement;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import tablas.Country;
 /**
  *
  * @author Usuario
@@ -19,6 +22,10 @@ public class crudCity
     private Connection cn;
     private Statement st;
     private showMessages showMessages;
+    ObservableList<City> misCitiesOrder = FXCollections.observableArrayList();
+    private GestionCountry gestion;
+    private ObservableList<Country> paises = FXCollections.observableArrayList();
+    
     
     public void crearCity (City nCity)
     {
@@ -91,6 +98,45 @@ public class crudCity
         
      
     }
+    
+    public ObservableList<City> ordenarCity(String filtro,String order,int limit)
+    {
+      this.conexion = new conection();
+        this.cn = this.conexion.getconection();
+        this.misCitiesOrder = FXCollections.observableArrayList();
+        this.gestion = new GestionCountry();
+        this.paises = this.gestion.misCountry;
+        
+      try
+        {
+         
+         ResultSet rc= cn.createStatement().executeQuery("Select * from city order by "+filtro+" "+order+" limit "+limit+" ");
+        
+         while (rc.next())
+         {
+          misCitiesOrder.add(new City(rc.getInt("ID"),rc.getString("Name"),rc.getString("CountryCode"),rc.getString("District"),rc.getInt("Population"),this.getPais(rc.getString(3))));
+         }
+        }
+        catch(Exception e)
+                     {
+                      System.err.println("Error: " +e);
+                     }
+      return this.misCitiesOrder;
+    
+    
+    }
+    private String getPais(String code)
+    {
+        String pais = "";
+        for(Country country : this.paises){
+            if(country.getCode().equals(code)){
+                pais = country.getName();
+            }
+        }
+        return pais;
+    }
+    
+    
     
     
 }

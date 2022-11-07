@@ -48,7 +48,7 @@ public class CLanguageController implements Initializable {
          this.llenar= new GestionCountry();
          this.codp= new GestionCountry();
          this.combosPais= this.codp.getCodigosPais();
-        SpinnerValueFactory<Double> valueFactory = new SpinnerValueFactory.DoubleSpinnerValueFactory(0.5, 100);
+         SpinnerValueFactory<Double> valueFactory = new SpinnerValueFactory.DoubleSpinnerValueFactory(0.5, 100);
         
         ComboPorcentaje.setValueFactory(valueFactory);
       
