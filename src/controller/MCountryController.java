@@ -98,6 +98,7 @@ public class MCountryController implements Initializable {
         this.llenarComboPaises();
         this.showMessages = new showMessages();
         this.district= new GestionCity();
+        this.pais = new GestionCountry();
         
         
       SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 150);
@@ -284,6 +285,9 @@ public class MCountryController implements Initializable {
              nomCiudad.add(nom);
          }
          this.comboCity.getItems().addAll(nomCiudad);
+         
+         String codCapi = this.pais.getCapi(codigoPS);
+         this.comboCity.getSelectionModel().select(this.district.getCapi(codCapi));
         
         
         
