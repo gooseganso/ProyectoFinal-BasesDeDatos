@@ -92,6 +92,8 @@ public class BLanguageController implements Initializable {
     private String comparador;
     private crudCountryLanguage filtrar;
     private showMessages showMessages;
+    @FXML
+    private TextField txtFiltrar;
 
     /**
      * Initializes the controller class.
@@ -258,7 +260,7 @@ public class BLanguageController implements Initializable {
     private void doFiltrar(ActionEvent event) 
     {
         this.filtrar= new crudCountryLanguage();
-        String filtro,order=" ",filtroSend="",filtroPopul="",filtroPais="",filtroOficial="",pais=this.comboPais.getSelectionModel().getSelectedItem(),filtrototal="",comparar,mesg ;
+        String filtro,order=" ",filtroSend="",filtroPopul="",filtroPais="",filtroname="",filtroOficial="",pais=this.comboPais.getSelectionModel().getSelectedItem(),filtrototal="",comparar,mesg,nombreFl ;
         int limit;
         float percentage;
         char oficial='0';
@@ -269,7 +271,7 @@ public class BLanguageController implements Initializable {
        
         comparar=this.doComparador();
         filtro=this.comboFiltro.getSelectionModel().getSelectedItem();
-        
+        nombreFl=this.txtFiltrar.getText();
         limit=this.spinnerLimit.getValue(); 
         if(this.radioAscen.isSelected())
             {
@@ -311,7 +313,7 @@ public class BLanguageController implements Initializable {
           }
           
         }
-        if(this.checkPais.isSelected()|| this.checkPercen.isSelected()|| this.checkOficial.isSelected())
+        if(this.checkPais.isSelected()|| this.checkPercen.isSelected()|| this.checkOficial.isSelected()||nombreFl.length()!=0)
               {
             restrict=true;
             if(this.checkPais.isSelected())
@@ -359,7 +361,23 @@ public class BLanguageController implements Initializable {
                         }
                     
                 }
-                    filtrototal=filtroPais+filtroPopul+filtroOficial;
+            if(nombreFl.length()==0)
+                {
+                  filtroname=" ";
+                }
+            else
+                {
+                  if(this.checkPais.isSelected()||this.checkPercen.isSelected()||this.checkOficial.isSelected())
+                  {
+                    filtroname=" and language like '"+nombreFl+"%'";
+                  }
+                  else
+                  {
+                   filtroname="where language like '"+nombreFl+"%'";
+                  }
+                }
+                    System.out.println(filtroname);
+                    filtrototal=filtroPais+filtroPopul+filtroOficial+filtroname;
         }
         
         if(validador)
