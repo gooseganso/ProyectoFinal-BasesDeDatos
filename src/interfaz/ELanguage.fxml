@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="511.0" prefWidth="786.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="controller.ELanguageController">
+<AnchorPane id="AnchorPane" prefHeight="511.0" prefWidth="786.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ELanguageController">
    <children>
       <TableView fx:id="tableLang" layoutY="40.0" prefHeight="267.0" prefWidth="851.0" style="-fx-background-color: gray;">
          <columns>
@@ -15,5 +15,6 @@
             <TableColumn fx:id="colPorcentaje" prefWidth="253.0" text="Porcentaje" />
          </columns>
       </TableView>
+      <JFXButton fx:id="btnEliminar" layoutX="400.0" layoutY="416.0" onAction="#doEliminar" style="-fx-background-color: orange;" text="Eliminar" />
    </children>
 </AnchorPane>

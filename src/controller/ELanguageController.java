@@ -5,10 +5,14 @@
 package controller;
 
 import Gestion.GestionLanguage;
+import Gestion.crudCountryLanguage;
+import Gestion.showMessages;
+import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -35,6 +39,10 @@ public class ELanguageController implements Initializable {
     private TableColumn<CountryLanguage, ?> colPorcentaje;
     private GestionLanguage llenar;
     ObservableList<CountryLanguage> misLanguages = FXCollections.observableArrayList();
+    @FXML
+    private JFXButton btnEliminar;
+    private showMessages showMessages;
+    private crudCountryLanguage eliminar;
 
     /**
      * Initializes the controller class.
@@ -44,6 +52,8 @@ public class ELanguageController implements Initializable {
     {
         this.llenar= new GestionLanguage();
         this.misLanguages = this.llenar.llenarTablaLanguage();
+        this.showMessages = new showMessages();
+        this.eliminar= new crudCountryLanguage();
         this.modelaTabla();
     }    
     private void modelaTabla() 
@@ -63,5 +73,29 @@ public class ELanguageController implements Initializable {
     public void llenarTablaPaises() 
     {
       tableLang.setItems(misLanguages);
+    }
+
+    @FXML
+    private void doEliminar(ActionEvent event) 
+    {
+      String cod,lang,mesg;
+      boolean confi;
+      CountryLanguage ELang= this.tableLang.getSelectionModel().getSelectedItem();
+      mesg = "Quiere borrar esta ciudad?   " + ELang.getLanguage() ;
+      confi = this.showMessages.showMessages(mesg, 3);
+      try {
+        if(confi)
+        {
+            ELang= this.tableLang.getSelectionModel().getSelectedItem();
+            this.eliminar.eliminarLang(ELang);
+            this.misLanguages.remove(this.tableLang.getSelectionModel().getSelectedItem());
+            this.tableLang.refresh();
+        }
+          }
+      catch (NumberFormatException nfe) 
+        {
+            mesg = "Falló la eliminación";
+            this.showMessages.showMessages(mesg, 1);
+        }
     }
 }

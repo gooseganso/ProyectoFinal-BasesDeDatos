@@ -25,7 +25,7 @@ public class GestionLanguage {
     private Statement st;
     ObservableList<CountryLanguage> misLanguages = FXCollections.observableArrayList();
     private GestionCountry gestion;
-     private ArrayList<String> combosLanguages;
+    ObservableList<CountryLanguage> combosLanguages = FXCollections.observableArrayList();
     
      public ObservableList<CountryLanguage> llenarTablaLanguage() 
     {
@@ -51,20 +51,20 @@ public class GestionLanguage {
       return this.misLanguages;
     }
      
-    public ArrayList<String> nomLanguages(String codigoPS)
+    public ObservableList<CountryLanguage> nomLanguages(String codigoPS)
     {
         this.conexion = new conection();
         this.cn = this.conexion.getconection();
-        this.combosLanguages= new ArrayList<String>();
+        this.combosLanguages= FXCollections.observableArrayList();
         System.out.println("El código es "+codigoPS);
         try{
             this.st = this.cn.createStatement();
-            ResultSet rc= cn.createStatement().executeQuery("select language from countrylanguage where countrycode='"+codigoPS+"'group by language");
+            ResultSet rc= cn.createStatement().executeQuery("select * from countrylanguage where countrycode='"+codigoPS+"'group by language");
             System.out.print("Conexion estable");
         
             while(rc.next())
                 {
-                this.combosLanguages.add(rc.getString("language"));   
+                this.combosLanguages.add(new CountryLanguage(rc.getString("CountryCode"),rc.getString("language"),rc.getString("IsOfficial").charAt(0),rc.getFloat("percentage")));   
                 }
             
            
