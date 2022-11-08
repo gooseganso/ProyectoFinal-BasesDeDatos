@@ -7,14 +7,14 @@
 
 <AnchorPane id="AnchorPane" prefHeight="511.0" prefWidth="786.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ELanguageController">
    <children>
-      <TableView fx:id="tableLang" layoutY="40.0" prefHeight="267.0" prefWidth="851.0" style="-fx-background-color: gray;">
+      <TableView fx:id="tableLang" layoutX="10.0" layoutY="14.0" prefHeight="348.0" prefWidth="766.0" style="-fx-background-color: gray;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
          <columns>
-            <TableColumn fx:id="colCountry" prefWidth="161.0" text="País" />
-            <TableColumn fx:id="colLang" prefWidth="215.0" text="Lenguaje" />
-            <TableColumn fx:id="colOficial" prefWidth="247.0" text="Oficial" />
-            <TableColumn fx:id="colPorcentaje" prefWidth="253.0" text="Porcentaje" />
+            <TableColumn fx:id="colCountry" prefWidth="161.0" text="Country Code" />
+            <TableColumn fx:id="colLang" prefWidth="215.0" text="Language" />
+            <TableColumn fx:id="colOficial" prefWidth="165.0" text="Is Official" />
+            <TableColumn fx:id="colPorcentaje" prefWidth="224.0" text="Percentage" />
          </columns>
       </TableView>
-      <JFXButton fx:id="btnEliminar" layoutX="400.0" layoutY="416.0" onAction="#doEliminar" style="-fx-background-color: orange;" text="Eliminar" />
+      <JFXButton fx:id="btnEliminar" layoutX="364.0" layoutY="441.0" onAction="#doEliminar" style="-fx-background-color: orange;" text="Eliminar" />
    </children>
 </AnchorPane>

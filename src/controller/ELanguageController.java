@@ -81,7 +81,7 @@ public class ELanguageController implements Initializable {
       String cod,lang,mesg;
       boolean confi;
       CountryLanguage ELang= this.tableLang.getSelectionModel().getSelectedItem();
-      mesg = "Quiere borrar esta ciudad?   " + ELang.getLanguage() ;
+      mesg = "Quiere borrar este lenguaje?   " + ELang.getLanguage() ;
       confi = this.showMessages.showMessages(mesg, 3);
       try {
         if(confi)
