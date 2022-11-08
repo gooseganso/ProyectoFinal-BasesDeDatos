@@ -4,6 +4,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="511.0" prefWidth="786.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ECityController">
    <children>
@@ -16,6 +17,9 @@
             <TableColumn fx:id="colPobla" prefWidth="235.0" text="Population" />
         </columns>
       </TableView>
-      <JFXButton fx:id="btnEliminar" layoutX="364.0" layoutY="447.0" onAction="#doEliminar" style="-fx-background-color: orange;" text="Eliminar" />
+      <JFXButton fx:id="btnEliminar" layoutX="346.0" layoutY="444.0" onAction="#doEliminar" style="-fx-background-color: orange;" text="Eliminar">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></JFXButton>
    </children>
 </AnchorPane>

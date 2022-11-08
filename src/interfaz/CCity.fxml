@@ -5,17 +5,21 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="511.0" prefWidth="786.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CCityController">
    <children>
-      <Label layoutX="56.0" layoutY="127.0" prefHeight="22.0" prefWidth="95.0" text="Nombre" />
-      <Label layoutX="56.0" layoutY="197.0" prefHeight="22.0" prefWidth="95.0" text="Código de país" />
-      <Label layoutX="56.0" layoutY="265.0" prefHeight="22.0" prefWidth="95.0" text="Departamento" />
-      <Label layoutX="56.0" layoutY="337.0" prefHeight="22.0" prefWidth="95.0" text="Población" />
-      <JFXComboBox fx:id="comboPais" layoutX="228.0" layoutY="196.0" onAction="#doDistrict" prefHeight="25.0" prefWidth="169.0" />
-      <TextField fx:id="tagNom" layoutX="228.0" layoutY="126.0" prefHeight="25.0" prefWidth="169.0" />
-      <JFXComboBox fx:id="comboDistric" disable="true" layoutX="228.0" layoutY="264.0" prefHeight="25.0" prefWidth="169.0" />
-      <TextField fx:id="tagPobla" layoutX="228.0" layoutY="336.0" prefHeight="25.0" prefWidth="169.0" />
-      <JFXButton fx:id="btnCrear" layoutX="577.0" layoutY="434.0" onAction="#doCrear" style="-fx-background-color: orange;" text="Crear" />
+      <Label layoutX="133.0" layoutY="126.0" prefHeight="22.0" prefWidth="95.0" text="Nombre" />
+      <Label layoutX="133.0" layoutY="196.0" prefHeight="22.0" prefWidth="95.0" text="Código de país" />
+      <Label layoutX="133.0" layoutY="264.0" prefHeight="22.0" prefWidth="95.0" text="Departamento" />
+      <Label layoutX="133.0" layoutY="336.0" prefHeight="22.0" prefWidth="95.0" text="Población" />
+      <JFXComboBox fx:id="comboPais" layoutX="282.0" layoutY="196.0" onAction="#doDistrict" prefHeight="25.0" prefWidth="169.0" />
+      <TextField fx:id="tagNom" layoutX="282.0" layoutY="126.0" prefHeight="25.0" prefWidth="169.0" />
+      <JFXComboBox fx:id="comboDistric" disable="true" layoutX="282.0" layoutY="264.0" prefHeight="25.0" prefWidth="169.0" />
+      <TextField fx:id="tagPobla" layoutX="282.0" layoutY="336.0" prefHeight="25.0" prefWidth="169.0" />
+      <JFXButton fx:id="btnCrear" layoutX="577.0" layoutY="434.0" onAction="#doCrear" style="-fx-background-color: orange;" text="Crear">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></JFXButton>
    </children>
 </AnchorPane>

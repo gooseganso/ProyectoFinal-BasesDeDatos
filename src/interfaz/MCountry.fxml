@@ -7,47 +7,52 @@
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="511.0" prefWidth="786.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MCountryController">
    <children>
       <JFXComboBox fx:id="comboCountry" layoutX="319.0" layoutY="57.0" onAction="#doActAll" prefHeight="25.0" prefWidth="150.0" />
       <Label layoutX="313.0" layoutY="25.0" text="Selecciones el país a modificar" />
-      <TextField fx:id="tagNom" disable="true" layoutX="123.0" layoutY="150.0" prefHeight="25.0" prefWidth="225.0" promptText="ej: Colombia" />
-      <Label contentDisplay="RIGHT" layoutX="39.0" layoutY="154.0" text="Nombre:" />
+      <TextField fx:id="tagNom" disable="true" layoutX="121.0" layoutY="150.0" prefHeight="25.0" prefWidth="240.0" promptText="ej: Colombia" />
+      <Label layoutX="40.0" layoutY="154.0" text="Nombre:" />
       <Label layoutX="245.0" layoutY="104.0" text="Código" />
       <TextField fx:id="tagCod1" disable="true" layoutX="297.0" layoutY="96.0" prefHeight="25.0" prefWidth="68.0" />
-      <Label layoutX="379.0" layoutY="100.0" text="Código 2:" />
-      <TextField fx:id="tagCod2" disable="true" layoutX="447.0" layoutY="96.0" prefHeight="25.0" prefWidth="121.0" />
-      <Label contentDisplay="CENTER" layoutX="39.0" layoutY="203.0" text="Región:" />
-      <JFXComboBox fx:id="comboContinente" disable="true" layoutX="474.0" layoutY="199.0" onAction="#doRegion" prefHeight="25.0" prefWidth="216.0" />
-      <JFXComboBox fx:id="comboRegion" disable="true" editable="true" layoutX="123.0" layoutY="199.0" prefHeight="25.0" prefWidth="225.0" />
-      <Label layoutX="380.0" layoutY="203.0" text="Continente" />
-      <Label contentDisplay="CENTER" layoutX="39.0" layoutY="256.0" prefHeight="25.0" prefWidth="53.0" text="Población" />
-      <JFXSlider fx:id="sliderInd" disable="true" layoutX="507.0" layoutY="262.0" max="2022.0" min="-2000.0" prefHeight="14.0" prefWidth="240.0" />
-      <Label layoutX="10.0" layoutY="349.0" prefHeight="25.0" prefWidth="99.0" text="Esperanza de vida" />
-      <Spinner fx:id="spinnerExp" disable="true" layoutX="123.0" layoutY="349.0" prefHeight="25.0" prefWidth="225.0" />
-      <Label layoutX="35.0" layoutY="393.0" prefHeight="25.0" prefWidth="33.0" text="PIB" />
-      <Label layoutX="389.0" layoutY="393.0" prefHeight="25.0" prefWidth="33.0" text="PIB 2" />
-      <Label layoutX="380.0" layoutY="256.0" prefHeight="25.0" prefWidth="121.0" text="Año de independencia" />
-      <Label layoutX="38.0" layoutY="431.0" prefHeight="25.0" prefWidth="68.0" text="Superficie" />
-      <Label layoutX="384.0" layoutY="431.0" prefHeight="25.0" prefWidth="51.0" text="Capital" />
-      <TextField fx:id="tagLocNom" disable="true" layoutX="472.0" layoutY="150.0" prefHeight="25.0" prefWidth="225.0" promptText="ej: Colombia" />
-      <TextField fx:id="tagPresi" disable="true" layoutX="477.0" layoutY="349.0" prefHeight="26.0" prefWidth="226.0" promptText="ej: Gustavo Petro" />
-      <Label layoutX="380.0" layoutY="150.0" prefHeight="25.0" prefWidth="99.0" text="Nombre local" />
-      <Label contentDisplay="CENTER" layoutX="380.0" layoutY="349.0" prefHeight="25.0" prefWidth="99.0" text="Cabeza de estado" />
-      <TextField fx:id="tagPobla" disable="true" layoutX="123.0" layoutY="256.0" prefHeight="25.0" prefWidth="225.0" />
-      <TextField fx:id="tagPIB" disable="true" layoutX="119.0" layoutY="393.0" prefHeight="26.0" prefWidth="240.0" />
-      <TextField fx:id="tagPIB2" disable="true" layoutX="469.0" layoutY="393.0" prefHeight="26.0" prefWidth="240.0" />
-      <TextField fx:id="tagSuperfi" disable="true" layoutX="123.0" layoutY="431.0" prefHeight="26.0" prefWidth="240.0" />
+      <Label layoutX="409.0" layoutY="100.0" text="Código 2:" />
+      <TextField fx:id="tagCod2" disable="true" layoutX="472.0" layoutY="96.0" prefHeight="25.0" prefWidth="121.0" />
+      <Label layoutX="40.0" layoutY="203.0" text="Región:" />
+      <JFXComboBox fx:id="comboContinente" disable="true" layoutX="502.0" layoutY="199.0" onAction="#doRegion" prefHeight="25.0" prefWidth="240.0" />
+      <JFXComboBox fx:id="comboRegion" disable="true" editable="true" layoutX="124.0" layoutY="199.0" prefHeight="25.0" prefWidth="240.0" />
+      <Label layoutX="411.0" layoutY="203.0" text="Continente" />
+      <Label layoutX="41.0" layoutY="257.0" prefHeight="25.0" prefWidth="53.0" text="Población" />
+      <JFXSlider fx:id="sliderInd" disable="true" layoutX="411.0" layoutY="278.0" max="2022.0" min="-2000.0" prefHeight="14.0" prefWidth="336.0" />
+      <Label layoutX="38.0" layoutY="349.0" prefHeight="25.0" prefWidth="99.0" text="Esperanza de vida" />
+      <Spinner fx:id="spinnerExp" disable="true" layoutX="152.0" layoutY="349.0" prefHeight="25.0" prefWidth="214.0" />
+      <Label layoutX="40.0" layoutY="394.0" prefHeight="25.0" prefWidth="33.0" text="PIB" />
+      <Label layoutX="411.0" layoutY="368.0" prefHeight="25.0" prefWidth="33.0" text="PIB 2" />
+      <Label layoutX="412.0" layoutY="247.0" prefHeight="25.0" prefWidth="121.0" text="Año de independencia" />
+      <Label layoutX="39.0" layoutY="431.0" prefHeight="25.0" prefWidth="68.0" text="Superficie" />
+      <Label layoutX="411.0" layoutY="405.0" prefHeight="25.0" prefWidth="51.0" text="Capital" />
+      <TextField fx:id="tagLocNom" disable="true" layoutX="502.0" layoutY="150.0" prefHeight="25.0" prefWidth="240.0" promptText="ej: Colombia" />
+      <TextField fx:id="tagPresi" disable="true" layoutX="545.0" layoutY="323.0" prefHeight="26.0" prefWidth="199.0" promptText="ej: Gustavo Petro" />
+      <Label layoutX="411.0" layoutY="150.0" prefHeight="25.0" prefWidth="99.0" text="Nombre local" />
+      <Label contentDisplay="CENTER" layoutX="413.0" layoutY="323.0" prefHeight="25.0" prefWidth="99.0" text="Cabeza de estado" />
+      <TextField fx:id="tagPobla" disable="true" layoutX="124.0" layoutY="257.0" prefHeight="25.0" prefWidth="240.0" />
+      <TextField fx:id="tagPIB" disable="true" layoutX="125.0" layoutY="393.0" prefHeight="26.0" prefWidth="240.0" />
+      <TextField fx:id="tagPIB2" disable="true" layoutX="504.0" layoutY="367.0" prefHeight="26.0" prefWidth="240.0" />
+      <TextField fx:id="tagSuperfi" disable="true" layoutX="125.0" layoutY="431.0" prefHeight="26.0" prefWidth="240.0" />
       <Label fx:id="tagInd" layoutX="591.0" layoutY="295.0">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btnModify" layoutX="699.0" layoutY="465.0" onAction="#doModify" style="-fx-background-color: orange;" text="Modificar" />
-      <Label layoutX="31.0" layoutY="294.0" prefHeight="26.0" prefWidth="109.0" text="Forma de Gobierno" />
-      <JFXComboBox fx:id="comboGob" disable="true" layoutX="175.0" layoutY="294.0" prefHeight="26.0" prefWidth="240.0" />
-      <JFXComboBox fx:id="comboCity" disable="true" layoutX="471.0" layoutY="431.0" prefHeight="26.0" prefWidth="240.0" />
+      <JFXButton fx:id="btnModify" layoutX="638.0" layoutY="450.0" onAction="#doModify" style="-fx-background-color: orange;" text="Modificar">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></JFXButton>
+      <Label layoutX="41.0" layoutY="301.0" prefHeight="26.0" prefWidth="109.0" text="Forma de Gobierno" />
+      <JFXComboBox fx:id="comboGob" disable="true" layoutX="151.0" layoutY="301.0" prefHeight="26.0" prefWidth="206.0" />
+      <JFXComboBox fx:id="comboCity" disable="true" layoutX="504.0" layoutY="405.0" prefHeight="26.0" prefWidth="240.0" />
+      <Line endX="200.0" endY="87.5" layoutX="193.0" layoutY="45.0" opacity="0.24" startX="200.0" startY="449.0" strokeWidth="3.0" />
    </children>
 </AnchorPane>

@@ -6,17 +6,21 @@
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="511.0" prefWidth="786.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CLanguageController">
    <children>
-      <JFXComboBox fx:id="comboPais" layoutX="141.0" layoutY="136.0" prefHeight="25.0" prefWidth="149.0" />
-      <TextField fx:id="txtLang" layoutX="141.0" layoutY="201.0" />
-      <Spinner fx:id="ComboPorcentaje" editable="true" layoutX="141.0" layoutY="310.0" />
-      <Label layoutX="34.0" layoutY="140.0" text="Código de país" />
-      <Label layoutX="60.0" layoutY="205.0" text="Lenguaje" />
-      <Label layoutX="70.0" layoutY="260.0" text="Oficcial" />
-      <JFXComboBox fx:id="ComboOficial" layoutX="141.0" layoutY="256.0" prefHeight="25.0" prefWidth="149.0" />
-      <Label layoutX="56.0" layoutY="314.0" text="Porcentaje" />
-      <JFXButton fx:id="btnCrear" layoutX="594.0" layoutY="425.0" onAction="#doCrear" style="-fx-background-color: orange;" text="Crear" />
+      <JFXComboBox fx:id="comboPais" layoutX="206.0" layoutY="137.0" prefHeight="25.0" prefWidth="149.0" />
+      <TextField fx:id="txtLang" layoutX="206.0" layoutY="202.0" />
+      <Spinner fx:id="ComboPorcentaje" editable="true" layoutX="206.0" layoutY="311.0" />
+      <Label layoutX="99.0" layoutY="141.0" text="Código de país" />
+      <Label layoutX="125.0" layoutY="206.0" text="Lenguaje" />
+      <Label layoutX="135.0" layoutY="261.0" text="Oficcial" />
+      <JFXComboBox fx:id="ComboOficial" layoutX="206.0" layoutY="257.0" prefHeight="25.0" prefWidth="149.0" />
+      <Label layoutX="121.0" layoutY="315.0" text="Porcentaje" />
+      <JFXButton fx:id="btnCrear" layoutX="594.0" layoutY="425.0" onAction="#doCrear" style="-fx-background-color: orange;" text="Crear">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></JFXButton>
    </children>
 </AnchorPane>
