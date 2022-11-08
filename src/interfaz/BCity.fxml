@@ -50,6 +50,8 @@
                   <JFXComboBox fx:id="comboDistrito" disable="true" layoutX="110.0" layoutY="192.0" prefHeight="25.0" prefWidth="124.0" />
                   <JFXButton fx:id="btnFiltro" layoutX="409.0" layoutY="264.0" onAction="#doFiltrar" style="-fx-background-color: orange;" text="Buscar" />
                   <TextField fx:id="population" editable="false" layoutX="172.0" layoutY="88.0" />
+                  <TextField fx:id="txtFiltrar" layoutX="98.0" layoutY="252.0" />
+                  <Label layoutX="19.0" layoutY="256.0" text="Nombre" />
                </children>
             </AnchorPane>
         </items>

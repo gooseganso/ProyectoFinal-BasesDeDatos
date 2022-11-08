@@ -38,7 +38,7 @@
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="319.0" prefWidth="708.0" style="-fx-background-color: #3D4956;">
                <children>
                   <Label layoutX="29.0" layoutY="23.0" text="Filtrar por:" textFill="WHITE" />
-                  <JFXCheckBox fx:id="checkPercen" layoutX="18.0" layoutY="55.0" onAction="#doFiltrarpercen" text="Población" />
+                  <JFXCheckBox fx:id="checkPercen" layoutX="18.0" layoutY="55.0" onAction="#doFiltrarpercen" text="Porcentaje" />
                   <JFXCheckBox fx:id="checkPais" layoutX="18.0" layoutY="152.0" onAction="#dofiltrarPais" text="País" />
                   <JFXCheckBox fx:id="checkOficial" layoutX="18.0" layoutY="195.0" onAction="#doFiltrarOficial" text="Oficialidad" />
                   <JFXRadioButton fx:id="menorigual" disable="true" layoutX="128.0" layoutY="52.0" onAction="#doMenorigual" text="&lt;=" />

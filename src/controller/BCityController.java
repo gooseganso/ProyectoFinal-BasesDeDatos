@@ -97,6 +97,8 @@ public class BCityController implements Initializable {
     private showMessages showMessages;
     @FXML
     private TextField population;
+    @FXML
+    private TextField txtFiltrar;
 
     /**
      * Initializes the controller class.
@@ -313,7 +315,7 @@ public class BCityController implements Initializable {
     private void doFiltrar(ActionEvent event) 
     {
       this.filtrar= new crudCity();
-      String filtro,order=" ",filtroSend="",filtroPopul="",filtroPais="",filtroDistric="",pais=this.comboPais.getSelectionModel().getSelectedItem(),filtrototal="",comparar,distrito=this.comboDistrito.getSelectionModel().getSelectedItem(),mesg ;
+      String filtro,order=" ",filtroSend="",filtroPopul="",filtroPais="",filtroDistric="",filtroname="",pais=this.comboPais.getSelectionModel().getSelectedItem(),filtrototal="",comparar,distrito=this.comboDistrito.getSelectionModel().getSelectedItem(),mesg,nombreFl ;
       int limit,population;
       boolean restrict=false,validador=true;
       
@@ -322,7 +324,7 @@ public class BCityController implements Initializable {
         
         comparar=this.doComparador();
         filtro=this.comboFiltro.getSelectionModel().getSelectedItem();
-        
+        nombreFl=this.txtFiltrar.getText();
         limit=this.spinnerLimit.getValue(); 
          if(this.radioAscen.isSelected())
         {
@@ -366,7 +368,7 @@ public class BCityController implements Initializable {
           }
           
         }
-        if(this.checkPais.isSelected()|| this.checkPobla.isSelected()|| this.checkDistrict.isSelected())
+        if(this.checkPais.isSelected()|| this.checkPobla.isSelected()|| this.checkDistrict.isSelected()||nombreFl.length()!=0)
         {
             restrict=true;
             if(this.checkPais.isSelected())
@@ -379,14 +381,14 @@ public class BCityController implements Initializable {
                  population=Integer.parseInt(this.population.getText()); 
                  if(this.mayor.isSelected()||this.mayorigual.isSelected()||this.menor.isSelected()||this.menorigual.isSelected()||this.igual.isSelected())
                     {
-                 if(this.checkPais.isSelected())
-                        {
-                    filtroPopul=" and population "+comparar+population+" ";
-                        }
-                 else
-                        {
-                    filtroPopul=" where population "+comparar+population+" ";
-                        }
+                        if(this.checkPais.isSelected()||!nombreFl.equals(""))
+                            {
+                                filtroPopul=" and population "+comparar+population+" ";
+                            }
+                        else
+                            {
+                                filtroPopul=" where population "+comparar+population+" ";
+                            }
                     }
                  else
                         {
@@ -398,7 +400,23 @@ public class BCityController implements Initializable {
                 {
                     filtroDistric=" and district='"+distrito+"'";
                 }
-                    filtrototal=filtroPais+filtroPopul+filtroDistric;
+            if(nombreFl.length()==0)
+                {
+                  filtroname=" ";
+                }
+            else
+                {
+                   if(this.checkPais.isSelected()||this.checkPobla.isSelected())
+                  {
+                    filtroname=" and name like '"+nombreFl+"%'";
+                  }
+                  else
+                  {
+                   filtroname="where name like '"+nombreFl+"%'";
+                  }
+                }
+            System.out.println(filtroname);
+            filtrototal=filtroPais+filtroPopul+filtroDistric+filtroname;
         }
         
         if(validador)
