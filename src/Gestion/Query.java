@@ -89,19 +89,6 @@ public class Query {
         return this.consulta;
     }
     
-    public String orderByCities(String combo, String ordenar, String limite){
-        this.consulta = " order by";
-        if(combo.equals("Código"))
-            this.consulta += " 1";
-        if(combo.equals("Nombre"))
-            this.consulta += " 2";
-        if(combo.equals("Distrito"))
-            this.consulta += " 4";
-        if(combo.equals("Población"))
-            this.consulta += " 5";
-        return this.consulta + " " + ordenar + " " + limite;
-    }
-    
     public String orderByLanguages(String combo, String ordenar, String limite){
         this.consulta = " order by";
         if(combo.equals("Nombre"))
