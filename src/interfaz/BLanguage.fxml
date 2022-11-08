@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="645.0" prefWidth="1096.0" style="-fx-background-color: #3D4956;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BLanguageController">
@@ -15,6 +22,37 @@
             <TableColumn fx:id="colPorcentaje" prefWidth="253.0" text="Porcentaje" />
          </columns>
       </TableView>
-      <JFXButton fx:id="btn_Volver" layoutX="945.0" layoutY="572.0" onAction="#volver" style="-fx-background-color: orange;" text="Volver" />
+      <JFXButton fx:id="btn_Volver" layoutX="1014.0" layoutY="21.0" onAction="#volver" style="-fx-background-color: orange;" text="Volver" />
+      <SplitPane dividerPositions="0.5329067641681902" layoutY="333.0" prefHeight="324.0" prefWidth="1100.0">
+         <items>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="319.0" prefWidth="145.0" style="-fx-background-color: #3D4956;">
+               <children>
+                  <JFXRadioButton fx:id="radioAscen" layoutX="30.0" layoutY="74.0" onAction="#doFiltroAscen" text="Ascendente" />
+                  <JFXRadioButton fx:id="radioDescen" layoutX="30.0" layoutY="111.0" onAction="#doFiltroDescen" text="Descendente" />
+                  <Label layoutX="20.0" layoutY="29.0" text="Ordenar por: " textFill="WHITE" />
+                  <Spinner fx:id="spinnerLimit" layoutX="135.0" layoutY="181.0" />
+                  <Label layoutX="20.0" layoutY="185.0" text="Límite de registros" textFill="WHITE" />
+                  <JFXComboBox fx:id="comboFiltro" layoutX="104.0" layoutY="25.0" prefHeight="25.0" prefWidth="124.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="319.0" prefWidth="708.0" style="-fx-background-color: #3D4956;">
+               <children>
+                  <Label layoutX="29.0" layoutY="23.0" text="Filtrar por:" textFill="WHITE" />
+                  <JFXCheckBox fx:id="checkPercen" layoutX="18.0" layoutY="55.0" onAction="#doFiltrarpercen" text="Población" />
+                  <JFXCheckBox fx:id="checkPais" layoutX="18.0" layoutY="152.0" onAction="#dofiltrarPais" text="País" />
+                  <JFXCheckBox fx:id="checkOficial" layoutX="18.0" layoutY="195.0" onAction="#doFiltrarOficial" text="Oficialidad" />
+                  <JFXRadioButton fx:id="menorigual" disable="true" layoutX="128.0" layoutY="52.0" onAction="#doMenorigual" text="&lt;=" />
+                  <JFXRadioButton fx:id="mayor" disable="true" layoutX="292.0" layoutY="53.0" onAction="#doMayor" text="&gt;" />
+                  <JFXRadioButton fx:id="igual" disable="true" layoutX="236.0" layoutY="52.0" onAction="#doIgual" text="=" />
+                  <JFXRadioButton fx:id="menor" disable="true" layoutX="186.0" layoutY="52.0" onAction="#doMenor" text="&lt;" />
+                  <JFXRadioButton fx:id="mayorigual" disable="true" layoutX="356.0" layoutY="53.0" onAction="#doMayorIgual" text="&gt;=" />
+                  <JFXComboBox fx:id="comboPais" disable="true" layoutX="110.0" layoutY="149.0" prefHeight="25.0" prefWidth="124.0" />
+                  <JFXComboBox fx:id="comboOficial" disable="true" layoutX="110.0" layoutY="192.0" prefHeight="25.0" prefWidth="124.0" />
+                  <JFXButton fx:id="btnFiltro" layoutX="409.0" layoutY="264.0" onAction="#doFiltrar" style="-fx-background-color: orange;" text="Buscar" />
+                  <TextField fx:id="percentage" editable="false" layoutX="172.0" layoutY="88.0" />
+               </children>
+            </AnchorPane>
+         </items>
+      </SplitPane>
    </children>
 </AnchorPane>

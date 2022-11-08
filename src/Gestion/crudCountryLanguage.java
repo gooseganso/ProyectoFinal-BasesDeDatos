@@ -7,7 +7,10 @@ package Gestion;
 import conection.conection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Statement;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import tablas.City;
 import tablas.CountryLanguage;
 
@@ -21,6 +24,7 @@ public class crudCountryLanguage
     private Connection cn;
     private Statement st;
     private showMessages showMessages;
+    ObservableList<CountryLanguage> misLangOrder = FXCollections.observableArrayList();
     
     
     public void crearLang (CountryLanguage nLang)
@@ -42,7 +46,8 @@ public class crudCountryLanguage
         }
         catch(Exception e)
            {
-                      System.err.println("Error: " +e);
+                      mesg=("No se pudo crear el lenguaje, puede que ya esté en la base de datos ");
+                       this.showMessages.showMessages(mesg, 1);
            }
     }
     public void eliminarLang(CountryLanguage ELang) 
@@ -91,5 +96,51 @@ public class crudCountryLanguage
            }
         
      
+    }
+    
+    public ObservableList<CountryLanguage> ordenarLang(boolean restrict,String filtro,String order,int limit,String filtroTotal)
+    {
+      this.conexion = new conection();
+        this.cn = this.conexion.getconection();
+        this.misLangOrder = FXCollections.observableArrayList();
+     
+      if(restrict)
+      {
+        try
+        {
+         
+         ResultSet rc= cn.createStatement().executeQuery("Select * from countrylanguage "+filtroTotal+" "+filtro+" "+order+" limit "+limit+" ");
+        
+         while (rc.next())
+         {
+          misLangOrder.add(new CountryLanguage(rc.getString("countryCode"),rc.getString("language"),rc.getString("isOfficial").charAt(0),rc.getFloat("percentage")));
+         }
+        }
+        catch(Exception e)
+                     {
+                      System.err.println("Error: " +e);
+                     }
+      }
+      else
+      {
+        try
+        {
+         
+         ResultSet rc= cn.createStatement().executeQuery("Select * from countrylanguage "+filtro+" "+order+" limit "+limit+" ");
+        
+         while (rc.next())
+         {
+          misLangOrder.add(new CountryLanguage(rc.getString("countryCode"),rc.getString("language"),rc.getString("isOfficial").charAt(0),rc.getFloat("percentage")));
+         }
+        }
+        catch(Exception e)
+                     {
+                      System.err.println("Error: " +e);
+                     }
+      }
+      
+      return this.misLangOrder;
+    
+    
     }
 }
