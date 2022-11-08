@@ -208,13 +208,23 @@ public class BCountryController implements Initializable {
     {
         this.llenar= new GestionCountry();
         this.showMessages = new showMessages();
-       SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100000000);
-       this.spinnerLimit.setValueFactory(valueFactory);
-       this.spinnerVida.setValueFactory(valueFactory);
-       this.spinnerArea.setValueFactory(valueFactory);
-       this.spinnerPob.setValueFactory(valueFactory);
-       this.spinnerIndep.setValueFactory(valueFactory);
-       valueFactory.setValue(0);
+       SpinnerValueFactory<Integer> valueFactory1 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 250);
+       SpinnerValueFactory<Integer> valueFactory2 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 150);
+       SpinnerValueFactory<Integer> valueFactory3 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 30000000);
+       SpinnerValueFactory<Integer> valueFactory4 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 2000000000);
+       SpinnerValueFactory<Integer> valueFactory5 = new SpinnerValueFactory.IntegerSpinnerValueFactory(-2000, 2022);
+       
+       this.spinnerLimit.setValueFactory(valueFactory1);
+       this.spinnerVida.setValueFactory(valueFactory2);
+       this.spinnerArea.setValueFactory(valueFactory3);
+       this.spinnerPob.setValueFactory(valueFactory4);
+       this.spinnerIndep.setValueFactory(valueFactory5);
+       valueFactory1.setValue(1);
+       valueFactory2.setValue(1);
+       valueFactory3.setValue(1);
+       valueFactory4.setValue(1);
+       valueFactory4.setValue(1);
+       
        
         
         this.modelaTabla();
@@ -278,8 +288,8 @@ public class BCountryController implements Initializable {
       if(this.misCountry.isEmpty()){
           String mesg = "No existen paises con esas caracteristicas";
           this.showMessages.showMessages(mesg, 1);
-      }
-      tableC.setItems(misCountry);
+      } else{
+      tableC.setItems(misCountry);}
     }
 
     @FXML
