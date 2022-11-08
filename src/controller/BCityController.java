@@ -381,7 +381,7 @@ public class BCityController implements Initializable {
                  population=Integer.parseInt(this.population.getText()); 
                  if(this.mayor.isSelected()||this.mayorigual.isSelected()||this.menor.isSelected()||this.menorigual.isSelected()||this.igual.isSelected())
                     {
-                        if(this.checkPais.isSelected()||!nombreFl.equals(""))
+                        if(this.checkPais.isSelected()||nombreFl.length()!=0)
                             {
                                 filtroPopul=" and population "+comparar+population+" ";
                             }
@@ -406,7 +406,7 @@ public class BCityController implements Initializable {
                 }
             else
                 {
-                   if(this.checkPais.isSelected()||this.checkPobla.isSelected())
+                   if(this.checkPais.isSelected())
                   {
                     filtroname=" and name like '"+nombreFl+"%'";
                   }
@@ -416,7 +416,7 @@ public class BCityController implements Initializable {
                   }
                 }
             System.out.println(filtroname);
-            filtrototal=filtroPais+filtroPopul+filtroDistric+filtroname;
+            filtrototal=filtroPais+filtroname+filtroPopul+filtroDistric;
         }
         
         if(validador)
