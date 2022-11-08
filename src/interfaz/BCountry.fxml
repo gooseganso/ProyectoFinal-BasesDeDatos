@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXRadioButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Line?>
 
 <AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="645.0" prefWidth="1096.0" style="-fx-background-color: #3D4956;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BCountryController">
    <children>
-      <TableView fx:id="tableC" layoutX="22.0" layoutY="20.0" prefHeight="200.0" prefWidth="1049.0" style="-fx-background-color: gray;">
+      <TableView fx:id="tableC" layoutX="338.0" layoutY="51.0" prefHeight="342.0" prefWidth="734.0" style="-fx-background-color: gray;">
         <columns>
           <TableColumn fx:id="Code" prefWidth="53.0" text="Code" />
           <TableColumn fx:id="Name" prefWidth="57.0" text="Name" />
@@ -28,9 +33,105 @@
             <TableColumn fx:id="lengua" minWidth="103.0" prefWidth="22.39992675781241" text="Lenguaje" />
         </columns>
       </TableView>
-      <JFXRadioButton layoutX="55.0" layoutY="527.0" />
-      <JFXRadioButton layoutX="55.0" layoutY="555.0" />
-      <JFXRadioButton layoutX="55.0" layoutY="584.0" />
-      <JFXButton fx:id="btn_Volver" layoutX="930.0" layoutY="589.0" onAction="#back" prefHeight="25.0" prefWidth="87.0" style="-fx-background-color: orange;" text="Volver" />
+      <JFXButton fx:id="btn_Volver" layoutX="984.0" layoutY="14.0" onAction="#back" prefHeight="25.0" prefWidth="87.0" style="-fx-background-color: orange;" text="Volver" />
+      <Label layoutX="30.0" layoutY="39.0" text="Ordenar por: " textFill="WHITE" />
+      <JFXComboBox fx:id="comboFiltro" layoutX="14.0" layoutY="71.0" prefHeight="26.0" prefWidth="277.0" style="-fx-background-color: white;" />
+      <JFXRadioButton fx:id="radioAscen" layoutX="40.0" layoutY="111.0" onAction="#doFiltroAscen" text="Ascendente" textFill="WHITE">
+         <unSelectedColor>
+            <Color red="1.0" green="1.0" blue="1.0" />
+         </unSelectedColor>
+      </JFXRadioButton>
+      <JFXRadioButton fx:id="radioDescen" layoutX="40.0" layoutY="148.0" onAction="#doFiltroDescen" text="Descendente" textFill="WHITE">
+         <unSelectedColor>
+            <Color red="1.0" green="1.0" blue="1.0" />
+         </unSelectedColor>
+      </JFXRadioButton>
+      <Spinner fx:id="spinnerLimit" layoutX="145.0" layoutY="218.0" />
+      <Label layoutX="30.0" layoutY="222.0" text="Límite de registros" textFill="WHITE" />
+      <JFXButton fx:id="btnFiltro" layoutX="1019.0" layoutY="599.0" onAction="#doFiltrar" style="-fx-background-color: orange;" text="Buscar" />
+      <Line endX="211.60000610351562" fill="WHITE" layoutX="756.0" layoutY="423.0" startX="-123.00001525878906" stroke="WHITE" strokeDashOffset="20.0" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeWidth="4.0" />
+      <Label layoutX="740.0" layoutY="425.0" text="Ocultar:" textFill="WHITE" />
+      <JFXRadioButton fx:id="radioConti" layoutX="661.0" layoutY="470.0" text="Continente" textFill="WHITE">
+         <unSelectedColor>
+            <Color red="1.0" green="1.0" blue="1.0" />
+         </unSelectedColor>
+      </JFXRadioButton>
+      <JFXRadioButton fx:id="radioReg" layoutX="661.0" layoutY="496.0" text="Región" textFill="WHITE">
+         <unSelectedColor>
+            <Color red="1.0" green="1.0" blue="1.0" />
+         </unSelectedColor>
+      </JFXRadioButton>
+      <JFXRadioButton fx:id="radioSuperfi" layoutX="661.0" layoutY="522.0" text="Área superficie" textFill="WHITE">
+         <unSelectedColor>
+            <Color red="1.0" green="1.0" blue="1.0" />
+         </unSelectedColor>
+      </JFXRadioButton>
+      <JFXRadioButton fx:id="radioInd" layoutX="661.0" layoutY="546.0" text="Año independencia" textFill="WHITE">
+         <unSelectedColor>
+            <Color red="1.0" green="1.0" blue="1.0" />
+         </unSelectedColor>
+      </JFXRadioButton>
+      <JFXRadioButton fx:id="radioPobla" layoutX="661.0" layoutY="571.0" text="Población" textFill="WHITE">
+         <unSelectedColor>
+            <Color red="1.0" green="1.0" blue="1.0" />
+         </unSelectedColor>
+      </JFXRadioButton>
+      <JFXRadioButton fx:id="radioExp" layoutX="661.0" layoutY="595.0" text="Expectativa de vida" textFill="WHITE">
+         <unSelectedColor>
+            <Color red="1.0" green="1.0" blue="1.0" />
+         </unSelectedColor>
+      </JFXRadioButton>
+      <Line endX="-101.60003662109375" endY="206.5999755859375" fill="WHITE" layoutX="785.0" layoutY="435.0" startX="-102.39999389648438" startY="-11.0" stroke="WHITE" strokeDashOffset="20.0" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeWidth="4.0" />
+      <JFXRadioButton fx:id="radioPIB" layoutX="661.0" layoutY="619.0" text="PIB" textFill="WHITE">
+         <unSelectedColor>
+            <Color red="1.0" green="1.0" blue="1.0" />
+         </unSelectedColor>
+      </JFXRadioButton>
+      <Line endX="-100.20001220703125" endY="206.5999755859375" fill="WHITE" layoutX="953.0" layoutY="436.0" startX="-100.20002746582031" startY="-11.0" stroke="WHITE" strokeDashOffset="20.0" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeWidth="4.0" />
+      <JFXRadioButton fx:id="radioPIB2" layoutX="829.0" layoutY="470.0" text="PIB2" textFill="WHITE">
+         <unSelectedColor>
+            <Color red="1.0" green="1.0" blue="1.0" />
+         </unSelectedColor>
+      </JFXRadioButton>
+      <JFXRadioButton fx:id="radioNomLoc" layoutX="829.0" layoutY="496.0" text="Nombre Local" textFill="WHITE">
+         <unSelectedColor>
+            <Color red="1.0" green="1.0" blue="1.0" />
+         </unSelectedColor>
+      </JFXRadioButton>
+      <JFXRadioButton fx:id="radioGov" layoutX="829.0" layoutY="522.0" text="Forma de gobierno" textFill="WHITE">
+         <unSelectedColor>
+            <Color red="1.0" green="1.0" blue="1.0" />
+         </unSelectedColor>
+      </JFXRadioButton>
+      <JFXRadioButton fx:id="radioPresi" layoutX="829.0" layoutY="546.0" text="Cabeza de estado" textFill="WHITE">
+         <unSelectedColor>
+            <Color red="1.0" green="1.0" blue="1.0" />
+         </unSelectedColor>
+      </JFXRadioButton>
+      <JFXRadioButton fx:id="radioCapi" layoutX="829.0" layoutY="571.0" text="Capital" textFill="WHITE">
+         <unSelectedColor>
+            <Color red="1.0" green="1.0" blue="1.0" />
+         </unSelectedColor>
+      </JFXRadioButton>
+      <JFXRadioButton fx:id="radioCod2" layoutX="829.0" layoutY="595.0" text="Codigo 2" textFill="WHITE">
+         <unSelectedColor>
+            <Color red="1.0" green="1.0" blue="1.0" />
+         </unSelectedColor>
+      </JFXRadioButton>
+      <JFXRadioButton fx:id="radioLen" layoutX="829.0" layoutY="619.0" text="Lenguaje" textFill="WHITE">
+         <unSelectedColor>
+            <Color red="1.0" green="1.0" blue="1.0" />
+         </unSelectedColor>
+      </JFXRadioButton>
+      <Line endX="115.99998474121094" endY="3.0517578125E-5" fill="WHITE" layoutX="167.0" layoutY="277.0" startX="-109.0" startY="3.0517578125E-5" stroke="WHITE" strokeDashOffset="20.0" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeWidth="4.0" />
+      <Line endX="-102.39999389648438" endY="206.0" fill="WHITE" layoutX="1072.0" layoutY="435.0" startX="-102.39999389648438" startY="-11.0" stroke="WHITE" strokeDashOffset="20.0" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeWidth="4.0" />
+      <Line endX="-102.40000915527344" endY="210.199951171875" fill="WHITE" layoutX="733.0" layoutY="433.0" startX="-102.39999389648438" startY="-11.0" stroke="WHITE" strokeDashOffset="20.0" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeWidth="4.0" />
+      <Label layoutX="6.0" layoutY="303.0" text="Filtrar por: " textFill="WHITE" />
+      <JFXComboBox fx:id="comboConti" layoutX="124.0" layoutY="334.0" prefHeight="26.0" prefWidth="174.0" style="-fx-background-color: white;" />
+      <Label layoutX="20.0" layoutY="338.0" prefHeight="18.0" prefWidth="71.0" text="Continente:" textFill="WHITE" />
+      <JFXComboBox fx:id="comboLeng" layoutX="124.0" layoutY="376.0" prefHeight="26.0" prefWidth="174.0" style="-fx-background-color: white;" />
+      <Label layoutX="10.0" layoutY="380.0" prefHeight="18.0" prefWidth="90.0" text="Lenguaje Oficial" textFill="WHITE" />
+      <JFXComboBox fx:id="comboGov" layoutX="124.0" layoutY="408.0" prefHeight="26.0" prefWidth="174.0" style="-fx-background-color: white;" />
+      <Label layoutX="11.0" layoutY="416.0" prefHeight="18.0" prefWidth="106.0" text="Forma de Gobierno" textFill="WHITE" />
    </children>
 </AnchorPane>

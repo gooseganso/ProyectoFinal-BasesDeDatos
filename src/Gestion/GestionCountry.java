@@ -38,7 +38,7 @@ public class GestionCountry
     private Vector<City> capitales;
   
     
-    public ObservableList<Country> llenarTablaPaises() 
+    public ObservableList<Country> llenarTablaPaises(String query) 
     {
         this.conexion = new conection();
         this.cn = this.conexion.getconection();
@@ -51,7 +51,7 @@ public class GestionCountry
         
         try
         {
-        ResultSet rs= cn.createStatement().executeQuery("Select * from country");
+        ResultSet rs= cn.createStatement().executeQuery(query);
         
         while (rs.next())
         {
@@ -455,6 +455,22 @@ public class GestionCountry
         }
          return capi;
      }
+     public Vector<String> getOfficial(){
+         this.conexion = new conection();
+         this.cn = this.conexion.getconection();
+         
+        Vector<String> oficiales = new Vector();
+        try {
+            this.st = this.cn.createStatement();
+            this.rs = this.st.executeQuery("select language from countrylanguage where isofficial='t' group by 1");
+            while(this.rs.next()){
+                oficiales.add(this.rs.getString(1));
+            }
+        } catch (SQLException e) {
+            System.out.println("Error: " + e);
+        }
+        return oficiales;
+    }
      
      
      

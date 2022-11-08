@@ -58,6 +58,7 @@ public class ECountryController implements Initializable {
     private JFXButton btnEliminar;
     private crudCountry eliminar;
     private showMessages showMessages;
+    private String query = "select * from country ";
  
 
     /**
@@ -66,7 +67,7 @@ public class ECountryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        this.llenar= new GestionCountry();
-        this.misCountry = this.llenar.llenarTablaPaises();
+        this.misCountry = this.llenar.llenarTablaPaises(query);
         this.eliminar= new crudCountry();
         this.showMessages = new showMessages();
         this.modelaTabla();
