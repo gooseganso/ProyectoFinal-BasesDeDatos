@@ -89,12 +89,4 @@ public class Query {
         return this.consulta;
     }
     
-    public String orderByLanguages(String combo, String ordenar, String limite){
-        this.consulta = " order by";
-        if(combo.equals("Nombre"))
-            this.consulta += " 2";
-        if(combo.equals("Porcentaje"))
-            this.consulta += " 4";
-        return this.consulta + " " + ordenar + " " + limite;
-    }
 }
